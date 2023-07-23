@@ -5,7 +5,7 @@ const HomePage = () => {
 
     return (
         <div className='generalHome'>
-            <h1></h1>
+            <h1 className='textoBienvenida'>¡Bienvenid@ a tu Guarderia Canina cerca de la ciudad!</h1>
         </div>
     )
 }

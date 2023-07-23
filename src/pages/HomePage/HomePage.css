@@ -1,15 +1,38 @@
-html, body {
-margin: 0;
-padding: 0;
-height: 100%;
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
 }
 
 .generalHome {
-    background-color: beige;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+  background-color: beige;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.textoBienvenida {
+  display: inline-block;
+  animation: caidaDesdeArriba 2s;
+}
+
+@keyframes caidaDesdeArriba {
+  0% {
+    transform: translateY(-1300%);
+    opacity: 0;
+  }
+  60% {
+    transform: translateY(20%);
+    opacity: 1;
+  }
+  80% {
+    transform: translateY(-10%);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }
