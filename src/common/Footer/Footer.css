@@ -1,6 +1,6 @@
 .footer {
-  background-color: white;
-  color: black;
+  background-color: rgb(46, 46, 46);
+  color: white;
   position: fixed;
   bottom: 0;
   left: 0;
@@ -14,6 +14,7 @@
   justify-content: space-between;
   max-width: 900px;
   margin: 0 auto;
+  background-color: rgb(46, 46, 46);
 }
 
 .footer-content {
@@ -58,7 +59,8 @@
 .footer-bottom {
   text-align: center;
   padding: 0.2rem;
-  background-color: rgb(235, 213, 122);
+  background-color: rgb(232, 232, 232);
+  color: black;
 }
 
 .footer-social-icons {
@@ -83,7 +85,7 @@
   justify-content: space-around;
   flex-direction: row;
   font-size: 1.5em;
-  background-color: rgb(235, 213, 122);
+  background-color: rgb(232, 232, 232);
 }
 
 .nav-links a {
@@ -112,19 +114,20 @@
 @media screen and (max-width: 768px) {
   .footer-content h3 {
     font-size: 0.5em;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
   }
-
   .footer-links a,
   .social-icons a {
     font-size: 1rem;
   }
-
   .nav-links {
     flex-direction: row;
     justify-content: space-around;
-    font-size: 1.07rem;
+    font-size: 0.7rem;
   }
   .footer {
-    max-height: 30%;
+    max-height: 26%;
   }
 }

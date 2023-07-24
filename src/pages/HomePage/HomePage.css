@@ -15,9 +15,8 @@ body {
   flex-direction: column;
   background-image: url(../../assets/instalacionesPerros.jpeg);
   background-size: cover;
-  background-size: contain;
   background-repeat: no-repeat;
-  opacity: 0;
+  opacity: 0.4;
   transition: opacity 2s ease;
 }
 

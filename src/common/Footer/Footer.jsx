@@ -1,11 +1,22 @@
-import React from "react";
+import React, {useState} from "react";
 import "./Footer.css";
 import instagramIcon from "../../assets/instagram.png";
-import facebookIcon from "../../assets/facebook.png";
-import twitterIcon from "../../assets/twitter.png";
+import facebookIcon from "../../assets/facebook(2).png";
+import twitterIcon from "../../assets/twitter(1).png";
 import { NavLink } from "react-router-dom";
+import RegisterForm from "../RegisterForm/RegisterForm";
 
 const Footer = () => {
+  const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
+
+  const handleRegisterModalOpen = () => {
+    setIsRegisterModalOpen(true);
+  };
+
+  const handleRegisterModalClose = () => {
+    setIsRegisterModalOpen(false);
+  };
+
   return (
     <footer className="footer">
             <div className="nav-links">
@@ -22,10 +33,13 @@ const Footer = () => {
           <h5>Alimentación</h5>
         </NavLink>
         <NavLink as={NavLink} to="/nosotros" exact="true" className="inicio">
-          <h5>Citas Online</h5>
+          <h5>Reservas</h5>
         </NavLink>
         <NavLink as={NavLink} to="/nosotros" exact="true" className="inicio">
           <h5>Sobre Nosotros</h5>
+        </NavLink>
+        <NavLink as={NavLink} to="/" exact="true" className="inicio">
+        <h5 onClick={handleRegisterModalOpen}>Registro</h5>
         </NavLink>
       </div>
       <div className="footer-container">
@@ -65,6 +79,12 @@ const Footer = () => {
           reservados.
         </p>
       </div>
+      {isRegisterModalOpen && (
+        <RegisterForm
+          isOpen={isRegisterModalOpen}
+          onRequestClose={handleRegisterModalClose}
+        />
+      )}
     </footer>
   );
 };
