@@ -55,19 +55,19 @@
 }
 
 .footer-social-icons {
-  display: flex;
-  justify-content: center;
-  margin-top: 1rem;
-}
-
-.footer-social-icons a {
-  margin: 0 0.5rem;
-}
-
-.footer-social-icons img {
-  width: 30px; /* Ajusta el tamaño de los iconos según tus preferencias */
-  height: 30px;
-}
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+  }
+  
+  .footer-social-icons a {
+    margin: 0 0.5rem;
+  }
+  
+  .footer-social-icons img {
+    width: 30px;
+    height: 30px;
+  }
 
 @media screen and (max-width: 768px) {
   .footer-container {
@@ -79,7 +79,7 @@
     margin-bottom: -2em;
   }
 
-  .footer-content {
+  .footer-content{
     margin-bottom: -1em;
   }
 }

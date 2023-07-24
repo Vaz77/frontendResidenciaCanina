@@ -36,3 +36,10 @@ body {
     transform: translateY(0);
   }
 }
+
+@media screen and (max-width: 768px) {
+  .textoBienvenida{
+    margin-left: 0.9em;
+  }
+
+}
