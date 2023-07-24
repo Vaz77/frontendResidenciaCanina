@@ -4,19 +4,16 @@ import instagramIcon from "../../assets/instagram.png";
 import facebookIcon from "../../assets/facebook(2).png";
 import twitterIcon from "../../assets/twitter(1).png";
 import { NavLink } from "react-router-dom";
-import RegisterForm from "../RegisterForm/RegisterForm";
+import LoginForm from "../LoginForm/LoginForm";
 
 const Footer = () => {
-  const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
-
-  const handleRegisterModalOpen = () => {
-    setIsRegisterModalOpen(true);
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+  const handleLoginModalOpen = () => {
+    setIsLoginModalOpen(true);
   };
-
-  const handleRegisterModalClose = () => {
-    setIsRegisterModalOpen(false);
+  const handleLoginModalClose = () => {
+    setIsLoginModalOpen(false);
   };
-
   return (
     <footer className="footer">
             <div className="nav-links">
@@ -39,7 +36,7 @@ const Footer = () => {
           <h5>Sobre Nosotros</h5>
         </NavLink>
         <NavLink as={NavLink} to="/" exact="true" className="inicio">
-        <h5 onClick={handleRegisterModalOpen}>Registro</h5>
+        <h5 onClick={handleLoginModalOpen}>Iniciar Sesión</h5>
         </NavLink>
       </div>
       <div className="footer-container">
@@ -79,10 +76,10 @@ const Footer = () => {
           reservados.
         </p>
       </div>
-      {isRegisterModalOpen && (
-        <RegisterForm
-          isOpen={isRegisterModalOpen}
-          onRequestClose={handleRegisterModalClose}
+      {isLoginModalOpen && (
+        <LoginForm
+          isOpen={isLoginModalOpen}
+          onRequestClose={handleLoginModalClose}
         />
       )}
     </footer>
