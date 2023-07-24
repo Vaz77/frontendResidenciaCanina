@@ -1,16 +1,18 @@
-.navbar {
+/* .navbar {
   display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+  flex-direction: row;
+  justify-content: space-around;
   align-items: center;
   color: #000000;
   padding: 1rem;
   font-family: "Caveat", sans-serif;
   font-size: 1.6em;
-  height: 100vh;
+  height: auto;
   position: fixed;
   left: 0;
   top: 0;
+  width: 100%;
+  background-color: rgb(247, 247, 234);
 }
 
 .logo {
@@ -23,7 +25,7 @@
   list-style: none;
   padding: 0;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   margin-top: 4em;
 }
@@ -71,13 +73,18 @@
 
 .nav-links {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: space-around;
   align-items: center;
   padding: 0;
-  margin-top: 4em;
+  margin-top: 20em;
 }
 
-@media screen and (max-width: 768px) {
+/* .logo{
+  width: 3em;
+} */
+
+/* @media screen and (max-width: 768px) {
   .menu-icon {
     display: block;
   }
@@ -101,4 +108,4 @@
     color: #357700;
     text-decoration: none;
   }
-}
+}  */

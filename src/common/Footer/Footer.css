@@ -1,7 +1,11 @@
 .footer {
-  background-color: beige;
+  background-color: white;
   color: black;
-  padding: 2rem 0;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 0;
 }
 
 .footer-container {
@@ -13,25 +17,29 @@
 }
 
 .footer-content {
-  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
   text-align: center;
+  justify-content: center;
 }
 
 .footer-content h3 {
-  margin-bottom: 1rem;
+  margin-top: 1em;
+  padding: 0;
 }
 
 .footer-links {
   list-style: none;
   padding: 0;
+  margin: 0;
 }
 
 .footer-links li {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.5em;
 }
 
 .footer-links a {
-  color: #fff;
+  color: white;
   text-decoration: none;
 }
 
@@ -49,37 +57,74 @@
 
 .footer-bottom {
   text-align: center;
-  padding: 1rem 0;
-  background-color: beige;
-  margin-bottom: -2em;
+  padding: 0.2rem;
+  background-color: rgb(235, 213, 122);
 }
 
 .footer-social-icons {
-    display: flex;
-    justify-content: center;
-    margin-top: 1rem;
-  }
-  
-  .footer-social-icons a {
-    margin: 0 0.5rem;
-  }
-  
-  .footer-social-icons img {
-    width: 30px;
-    height: 30px;
-  }
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.footer-social-icons a {
+  margin: 0 0.5rem;
+}
+
+.footer-social-icons img {
+  width: 30px;
+  height: 30px;
+}
+
+.nav-links {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  font-size: 1.5em;
+  background-color: rgb(235, 213, 122);
+}
+
+.nav-links a {
+  position: relative;
+  color: #000000;
+  text-decoration: none;
+}
+
+.nav-links a::before {
+  content: "";
+  position: absolute;
+  bottom: 1.2em;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: black;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.7s ease;
+}
+
+.nav-links a:hover::before {
+  transform: scaleX(1);
+}
 
 @media screen and (max-width: 768px) {
-  .footer-container {
-    flex-direction: column;
-    align-items: center;
+  .footer-content h3 {
+    font-size: 0.5em;
   }
 
-  .footer-bottom {
-    margin-bottom: -2em;
+  .footer-links a,
+  .social-icons a {
+    font-size: 1rem;
   }
 
-  .footer-content{
-    margin-bottom: -1em;
+  .nav-links {
+    flex-direction: row;
+    justify-content: space-around;
+    font-size: 1.07rem;
+  }
+  .footer {
+    max-height: 30%;
   }
 }
