@@ -2,16 +2,8 @@ import React, { useState } from "react";
 import Modal from "react-modal";
 import "./LoginForm.css";
 import { NavLink } from "react-router-dom";
-import RegisterForm from "../RegisterForm/RegisterForm";
 
-const LoginForm = ({ isOpen, onRequestClose }) => {
-  const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
-  const handleRegisterModalOpen = () => {
-    setIsRegisterModalOpen(true);
-  };
-  const handleRegisterModalClose = () => {
-    setIsRegisterModalOpen(false);
-  };
+const LoginForm = ({ isOpen, onRequestClose, onRegisterModalOpen }) => {
   return (
     <Modal
       isOpen={isOpen}
@@ -32,7 +24,7 @@ const LoginForm = ({ isOpen, onRequestClose }) => {
             <input type="password" id="password" />
           </div>
           <NavLink as={NavLink} to="/" exact="true" className="inicio">
-            <h3 onClick={handleRegisterModalOpen}>
+            <h3 onClick={onRegisterModalOpen}>
               Todavía no te has registrado? Registrate aquí
             </h3>
           </NavLink>
@@ -43,10 +35,6 @@ const LoginForm = ({ isOpen, onRequestClose }) => {
             <button className="btn btn-login">Iniciar Sesión</button>
           </div>
         </form>
-        <RegisterForm
-          isOpen={isRegisterModalOpen}
-          onRequestClose={handleRegisterModalClose}
-        />
       </div>
     </Modal>
   );

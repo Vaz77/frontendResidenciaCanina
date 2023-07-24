@@ -5,14 +5,24 @@ import facebookIcon from "../../assets/facebook(2).png";
 import twitterIcon from "../../assets/twitter(1).png";
 import { NavLink } from "react-router-dom";
 import LoginForm from "../LoginForm/LoginForm";
+import RegisterForm from "../RegisterForm/RegisterForm";
 
 const Footer = () => {
+  const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const handleLoginModalOpen = () => {
     setIsLoginModalOpen(true);
+    setIsRegisterModalOpen(false);
   };
   const handleLoginModalClose = () => {
     setIsLoginModalOpen(false);
+  };
+  const handleRegisterModalOpen = () => {
+    setIsRegisterModalOpen(true);
+    setIsLoginModalOpen(false);
+  };
+  const handleRegisterModalClose = () => {
+    setIsRegisterModalOpen(false);
   };
   return (
     <footer className="footer">
@@ -80,6 +90,13 @@ const Footer = () => {
         <LoginForm
           isOpen={isLoginModalOpen}
           onRequestClose={handleLoginModalClose}
+          onRegisterModalOpen={handleRegisterModalOpen}
+        />
+      )}
+      {isRegisterModalOpen && (
+        <RegisterForm
+          isOpen={isRegisterModalOpen}
+          onRequestClose={handleRegisterModalClose}
         />
       )}
     </footer>
