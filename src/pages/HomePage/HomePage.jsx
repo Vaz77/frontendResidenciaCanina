@@ -1,12 +1,15 @@
 import React, { useEffect, useState, useRef } from "react";
+import { NavLink } from "react-router-dom";
 import "./HomePage.css";
 import InfoPage from "../InfoPage/InfoPage";
 import Footer from "../../common/Footer/Footer";
+import ServicesPage from "../ServicesPage/ServicesPage";
 
 const HomePage = () => {
   const [showImage, setShowImage] = useState(false);
   const [showInfoPage, setShowInfoPage] = useState(false);
   const infoPageRef = useRef(null);
+  const servicesPageRef = useRef(null);
   useEffect(() => {
     // Cuando el componente se monte, muestra la imagen después de un breve retraso
     const timeout = setTimeout(() => {
@@ -47,6 +50,9 @@ const HomePage = () => {
         </div>
         <div ref={infoPageRef} id="infoPage">
           {showInfoPage && <InfoPage />}
+        </div>
+        <div ref={servicesPageRef} id="servicesPage">
+          <ServicesPage />
         </div>
         <Footer />
       </div>

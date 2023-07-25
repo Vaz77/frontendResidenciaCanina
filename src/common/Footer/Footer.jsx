@@ -45,16 +45,37 @@ const Footer = () => {
       behavior: "smooth",
     });
   };
+  const handleServicesClick = () => {
+    // Obtener la posición de la página después de infoPage (servicesPage)
+    const servicesPageSection = document.getElementById("servicesPage");
+    if (servicesPageSection) {
+      const windowHeight = window.innerHeight;
+      const rect = servicesPageSection.getBoundingClientRect();
+      const scrollOffset = Math.max(0, rect.top - windowHeight / 2);
+      servicesPageSection.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+        inline: "nearest",
+      });
+    }
+  };
+
   return (
     <footer className="footer">
       <div className="nav-links">
-        <NavLink as={NavLink} to="/" exact="true" className="inicio" onClick={handleInicioClick}>
+        <NavLink
+          as={NavLink}
+          to="/"
+          exact="true"
+          className="inicio"
+          onClick={handleInicioClick}
+        >
           <h5>Inicio</h5>
         </NavLink>
         <NavLink className="inicio" onClick={handleInstalacionesClick}>
           <h5>Instalaciones</h5>
         </NavLink>
-        <NavLink as={NavLink} to="/nosotros" exact="true" className="inicio">
+        <NavLink className="inicio" onClick={handleServicesClick}>
           <h5>Servicios</h5>
         </NavLink>
         <NavLink as={NavLink} to="/nosotros" exact="true" className="inicio">
