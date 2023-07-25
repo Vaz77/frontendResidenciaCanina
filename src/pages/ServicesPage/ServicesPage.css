@@ -3,9 +3,7 @@
   flex-direction: column;
   align-items: center;
   padding: 40px;
-  margin-bottom: 2em;
   background-color: #f2668f;
-  height: 50em;
 }
 
 .service-section-container {
@@ -35,4 +33,20 @@
 .service-icon {
   font-size: 50px;
   margin-bottom: 20px;
+}
+
+@media screen and (max-width: 768px) {
+  .services-page {
+    padding: 20px;
+    max-width: 100%;
+  }
+
+  .service-section-container {
+    grid-template-columns: 1fr;
+  }
+
+  .service-section {
+    height: auto;
+    margin-bottom: 20px;
+  }
 }

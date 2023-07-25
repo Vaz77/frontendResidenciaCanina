@@ -1,10 +1,10 @@
 .infoPage {
   background-color: #14e3e0;
-  height: 100vh;
+  min-height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
+  padding: 30px;
   box-sizing: border-box;
   color: white;
 }
@@ -14,31 +14,9 @@
   padding: 20px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
   margin-bottom: 3em;
-  margin-top: 3em;
   max-width: 600px;
-  margin-left: 50em;
-  width: 100%;
+  margin-left: 30em;
   color: white;
-  background-color: #0c8d8b;
-}
-.info-card2 {
-  border-radius: 8px;
-  padding: 20px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  margin-bottom: 20px;
-  margin-right: 50em;
-  max-width: 600px;
-  width: 100%;
-  background-color: #0c8d8b;
-}
-.info-card3 {
-  border-radius: 8px;
-  padding: 20px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  margin-bottom: 20px;
-  margin-left: 50em;
-  max-width: 600px;
-  width: 100%;
   background-color: #0c8d8b;
 }
 
@@ -46,11 +24,20 @@
   border-radius: 8px;
   padding: 20px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  margin-bottom: 20px;
-  margin-right: 50em;
+  margin-bottom: 30px;
   max-width: 600px;
-  width: 100%;
   background-color: #0c8d8b;
+  margin-right: 20em;
+}
+
+.info-card3 {
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  max-width: 600px;
+  background-color: #0c8d8b;
+  margin-left: 30em;
 }
 
 .textoCard {
@@ -58,24 +45,20 @@
 }
 
 @media screen and (max-width: 768px) {
-  .info-card {
-    margin-left: 20px;
-    margin-right: 20px;
-    max-width: 100%;
-  }
-
-  .info-card2 {
-    margin-left: 20px;
-    margin-right: 20px;
-    max-width: 100%;
-  }
-
+  .info-card,
+  .info-card2,
   .info-card3 {
-    margin-left: 20px;
-    margin-right: 20px;
+    margin-left: 1em;
+    margin-right: 1em;
     max-width: 100%;
   }
+
   .infoPage {
-    height: 100%;
+    width: 100%;
+    padding: 10px;
+  }
+  
+  .info-card:first-child {
+    margin-top: 1em;
   }
 }

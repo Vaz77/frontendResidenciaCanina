@@ -59,6 +59,20 @@ const Footer = () => {
       });
     }
   };
+  const handleAppointmentsClick = () => {
+    // Obtener la posición de la página después de infoPage (servicesPage)
+    const appointmentsPageSection = document.getElementById("appointmentsPage");
+    if (appointmentsPageSection) {
+      const windowHeight = window.innerHeight;
+      const rect = appointmentsPageSection.getBoundingClientRect();
+      const scrollOffset = Math.max(0, rect.top - windowHeight / 2);
+      appointmentsPageSection.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+        inline: "nearest",
+      });
+    }
+  };
 
   return (
     <footer className="footer">
@@ -81,7 +95,7 @@ const Footer = () => {
         <NavLink as={NavLink} to="/nosotros" exact="true" className="inicio">
           <h5>Alimentación</h5>
         </NavLink>
-        <NavLink as={NavLink} to="/nosotros" exact="true" className="inicio">
+        <NavLink className="inicio" onClick={handleAppointmentsClick}>
           <h5>Reservas</h5>
         </NavLink>
         <NavLink as={NavLink} to="/nosotros" exact="true" className="inicio">
