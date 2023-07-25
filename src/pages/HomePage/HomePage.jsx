@@ -8,6 +8,7 @@ import ServicesPage from "../ServicesPage/ServicesPage";
 const HomePage = () => {
   const [showImage, setShowImage] = useState(false);
   const [showInfoPage, setShowInfoPage] = useState(false);
+  const [showServicesPage, setShowServicesPage] = useState(false);
   const infoPageRef = useRef(null);
   const servicesPageRef = useRef(null);
   useEffect(() => {
@@ -18,12 +19,22 @@ const HomePage = () => {
     // Limpia el timeout cuando el componente se desmonte para evitar errores
     return () => clearTimeout(timeout);
   }, []);
-
+  useEffect(() => {
+    const infoPageSection = infoPageRef.current;
+    const rect = infoPageSection.getBoundingClientRect();
+    // Mostrar InfoPage si el rectángulo superior de infoPage está dentro de la ventana visible
+    setShowInfoPage(rect.top < window.innerHeight && rect.bottom >= 0);
+    // Mostrar ServicesPage solo cuando el rectángulo inferior de infoPage no esté visible
+    setShowServicesPage(rect.bottom >= 0);
+  }, []);
   const handleScroll = () => {
     const infoPageSection = infoPageRef.current;
     if (infoPageSection) {
       const rect = infoPageSection.getBoundingClientRect();
+      // Actualizar showInfoPage basado en la posición de desplazamiento
       setShowInfoPage(rect.top < window.innerHeight && rect.bottom >= 0);
+      // Actualizar showServicesPage basado en la posición de desplazamiento
+      setShowServicesPage(rect.bottom >= 0);
     }
   };
   useEffect(() => {
@@ -52,7 +63,7 @@ const HomePage = () => {
           {showInfoPage && <InfoPage />}
         </div>
         <div ref={servicesPageRef} id="servicesPage">
-          <ServicesPage />
+          {showServicesPage && <ServicesPage />}
         </div>
         <Footer />
       </div>
