@@ -1,11 +1,11 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import "./Footer.css";
 import instagramIcon from "../../assets/instagram.png";
 import facebookIcon from "../../assets/facebook(2).png";
 import twitterIcon from "../../assets/twitter(1).png";
-import { NavLink } from "react-router-dom";
 import LoginForm from "../LoginForm/LoginForm";
 import RegisterForm from "../RegisterForm/RegisterForm";
+import { NavLink } from "react-router-dom";
 
 const Footer = () => {
   const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
@@ -24,15 +24,31 @@ const Footer = () => {
   const handleRegisterModalClose = () => {
     setIsRegisterModalOpen(false);
   };
+  const handleInstalacionesClick = () => {
+    // Obtener la posición de la sección "Instalaciones" en HomePage
+    const infoPageSection = document.getElementById("infoPage");
+    if (infoPageSection) {
+      const windowHeight = window.innerHeight;
+      const rect = infoPageSection.getBoundingClientRect();
+      const scrollOffset = Math.max(0, rect.top - windowHeight / 2);
+      infoPageSection.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+        inline: "nearest",
+        top: scrollOffset,
+      });
+    }
+  };
+
   return (
     <footer className="footer">
-            <div className="nav-links">
+      <div className="nav-links">
         <NavLink as={NavLink} to="/" exact="true" className="inicio">
           <h5>Inicio</h5>
         </NavLink>
-        <NavLink as={NavLink} to="/instalaciones" exact="true" className="inicio">
+        <div className="inicio" onClick={handleInstalacionesClick}>
           <h5>Instalaciones</h5>
-        </NavLink>
+        </div>
         <NavLink as={NavLink} to="/nosotros" exact="true" className="inicio">
           <h5>Servicios</h5>
         </NavLink>
@@ -46,13 +62,13 @@ const Footer = () => {
           <h5>Sobre Nosotros</h5>
         </NavLink>
         <NavLink as={NavLink} to="/" exact="true" className="inicio">
-        <h5 onClick={handleLoginModalOpen}>Iniciar Sesión</h5>
+          <h5 onClick={handleLoginModalOpen}>Iniciar Sesión</h5>
         </NavLink>
       </div>
       <div className="footer-container">
         <div className="footer-content">
           <h3>Teléfono: 692157845</h3>
-          <h3>Email: info@guarderiacanina.com</h3>
+          <h3 className="textoEmailFooter">Email: info@guarderiacanina.com</h3>
         </div>
         <div className="footer-content">
           <div className="footer-social-icons">
