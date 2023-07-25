@@ -35,20 +35,25 @@ const Footer = () => {
         behavior: "smooth",
         block: "start",
         inline: "nearest",
-        top: scrollOffset,
       });
     }
   };
-
+  const handleInicioClick = () => {
+    // Hacer scroll hasta la parte superior de la página
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
   return (
     <footer className="footer">
       <div className="nav-links">
-        <NavLink as={NavLink} to="/" exact="true" className="inicio">
+        <NavLink as={NavLink} to="/" exact="true" className="inicio" onClick={handleInicioClick}>
           <h5>Inicio</h5>
         </NavLink>
-        <div className="inicio" onClick={handleInstalacionesClick}>
+        <NavLink className="inicio" onClick={handleInstalacionesClick}>
           <h5>Instalaciones</h5>
-        </div>
+        </NavLink>
         <NavLink as={NavLink} to="/nosotros" exact="true" className="inicio">
           <h5>Servicios</h5>
         </NavLink>
