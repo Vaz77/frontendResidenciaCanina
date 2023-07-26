@@ -1,0 +1,48 @@
+.alimentPage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #ffbfbf;
+  padding: 30px;
+  font-family: Arial, sans-serif;
+}
+
+.aliment {
+  max-width: 800px;
+  width: 100%;
+  background: hsl(30, 24%, 85%);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin-top: -10em;
+}
+
+.title {
+  font-size: 32px;
+  margin-bottom: 20px;
+  color: #333333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon {
+  font-size: 36px;
+  margin: 0 10px;
+}
+
+.instructions {
+  font-size: 18px;
+  color: #666666;
+  margin-bottom: 20px;
+}
+
+.QuizzContainer {
+  max-width: 600px;
+  width: 100%;
+  margin: 0 auto;
+}

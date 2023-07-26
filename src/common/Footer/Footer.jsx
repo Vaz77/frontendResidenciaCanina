@@ -25,7 +25,6 @@ const Footer = () => {
     setIsRegisterModalOpen(false);
   };
   const handleInstalacionesClick = () => {
-    // Obtener la posición de la sección "Instalaciones" en HomePage
     const infoPageSection = document.getElementById("infoPage");
     if (infoPageSection) {
       const windowHeight = window.innerHeight;
@@ -39,14 +38,12 @@ const Footer = () => {
     }
   };
   const handleInicioClick = () => {
-    // Hacer scroll hasta la parte superior de la página
     window.scrollTo({
       top: 0,
       behavior: "smooth",
     });
   };
   const handleServicesClick = () => {
-    // Obtener la posición de la página después de infoPage (servicesPage)
     const servicesPageSection = document.getElementById("servicesPage");
     if (servicesPageSection) {
       const windowHeight = window.innerHeight;
@@ -60,13 +57,25 @@ const Footer = () => {
     }
   };
   const handleAppointmentsClick = () => {
-    // Obtener la posición de la página después de infoPage (servicesPage)
     const appointmentsPageSection = document.getElementById("appointmentsPage");
     if (appointmentsPageSection) {
       const windowHeight = window.innerHeight;
       const rect = appointmentsPageSection.getBoundingClientRect();
       const scrollOffset = Math.max(0, rect.top - windowHeight / 2);
       appointmentsPageSection.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+        inline: "nearest",
+      });
+    }
+  };
+  const handleAlimentClick = () => {
+    const alimentPageSection = document.getElementById("alimentPage");
+    if (alimentPageSection) {
+      const windowHeight = window.innerHeight;
+      const rect = alimentPageSection.getBoundingClientRect();
+      const scrollOffset = Math.max(0, rect.top - windowHeight / 2);
+      alimentPageSection.scrollIntoView({
         behavior: "smooth",
         block: "start",
         inline: "nearest",
@@ -92,7 +101,7 @@ const Footer = () => {
         <NavLink className="inicio" onClick={handleServicesClick}>
           <h5>Servicios</h5>
         </NavLink>
-        <NavLink as={NavLink} to="/nosotros" exact="true" className="inicio">
+        <NavLink className="inicio" onClick={handleAlimentClick}>
           <h5>Alimentación</h5>
         </NavLink>
         <NavLink className="inicio" onClick={handleAppointmentsClick}>
@@ -135,8 +144,6 @@ const Footer = () => {
             </a>
           </div>
         </div>
-      </div>
-      <div className="footer-bottom">
         <p>
           &copy; {new Date().getFullYear()} Guarderia Canina. Todos los derechos
           reservados.
