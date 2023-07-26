@@ -3,14 +3,121 @@
   flex-direction: column;
   align-items: center;
   padding: 40px;
-  margin-bottom: 2em;
-  background-color: #ffeded;
+  background-color: #f7b84b;
+  min-height: 100vh;
+}
+
+.reservation-form {
+  background-color: #f2668f;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  max-width: 600px;
+}
+
+.form-title {
+  color: #fff;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  color: #fff;
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+textarea {
+  width: 100%;
+  padding: 12px;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: none;
+}
+
+input[type="date"],
+input[type="time"] {
+  width: 100%;
+  padding: 12px;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: none;
+  background-color: #fff;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.form-button {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  font-size: 1.2rem;
+  background-color: #f7b84b;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.form-button:hover {
+  background-color: #f2668f;
+}
+
+.other-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.how-to-reserve {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 3em;
+}
+
+.textoPlaza {
+  margin-left: 1em;
+}
+
+.icon1 {
+  width: 3em;
+  margin-left: 2.3em;
 }
 
 @media screen and (max-width: 768px) {
   .appointments-page {
     padding: 20px;
     width: 100%;
-    height: 100vh;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .other-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .textReserva {
+    margin-right: 2.5em;
+  }
+  .how-to-reserve {
+    margin-right: 2.5em;
   }
 }

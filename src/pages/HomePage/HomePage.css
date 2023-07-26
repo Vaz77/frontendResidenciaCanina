@@ -70,9 +70,11 @@ body {
 
 .reservar-cita-texto {
   font-size: 18px;
-  color: #fff;
+  font-family: h;
+  color: #ff0000;
   text-transform: uppercase;
   font-weight: bold;
+  text-decoration: none;
 }
 
 .reservar-cita-rope {
