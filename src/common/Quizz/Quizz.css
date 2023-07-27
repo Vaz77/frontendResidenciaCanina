@@ -45,6 +45,7 @@
   transition: opacity 0.3s ease, transform 0.3s ease;
   position: relative;
   animation: fadeIn 0.6s ease;
+  background-color: transparent;
 }
 
 @keyframes fadeIn {

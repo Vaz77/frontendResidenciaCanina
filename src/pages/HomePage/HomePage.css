@@ -111,6 +111,20 @@ body {
   }
 }
 
+.perro-image-container {
+  position: fixed;
+  bottom: 9.3em;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+  margin-left: -50em;
+}
+
+.perro-image {
+  width: 100%;
+  max-width: 800px;
+}
+
 @media screen and (max-width: 768px) {
   .textoBienvenida {
     margin-left: 0.9em;

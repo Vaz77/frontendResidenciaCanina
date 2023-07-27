@@ -1,9 +1,14 @@
 import React from "react";
+import "./Question.css";
 
 const Question = ({ pregunta, opciones, onRespuestaSeleccionada }) => {
   const [fadeOut, setFadeOut] = React.useState(false);
   const handleRespuestaSeleccionada = (respuesta) => {
     onRespuestaSeleccionada(respuesta);
+    setFadeOut(true);
+    setTimeout(() => {
+      setFadeOut(false);
+    }, 300);
   };
   return (
     <div className={`PreguntaContainer ${fadeOut ? "fadeOut" : ""}`}>

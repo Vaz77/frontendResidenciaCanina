@@ -1,0 +1,105 @@
+.PreguntaContainer {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  padding: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  margin-bottom: 20px;
+  opacity: 1;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  animation: fadeIn 0.6s ease;
+  width: 25em;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.PreguntaContainer.fadeOut {
+  opacity: 0;
+  transform: scale(0.8);
+}
+
+.PreguntaContainer h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+ul.PreguntaOptions {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+li.PreguntaOption {
+  margin-left: 30px;
+  opacity: 1;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+li.PreguntaOption.fadeOut {
+  opacity: 0;
+  transform: translateY(-20px);
+}
+
+.PreguntaOptionLabel {
+  position: relative;
+  cursor: pointer;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.PreguntaOptionInput {
+  display: none;
+}
+
+.PreguntaOptionCheckmark {
+  height: 16px;
+  width: 16px;
+  background-color: #f9f9f9;
+  border: 2px solid #333;
+  border-radius: 50%;
+  margin-right: 8px;
+  margin-left: 5px;
+  flex: 0 0 18px;
+}
+
+.PreguntaOptionLabel:hover .PreguntaOptionCheckmark {
+  background-color: #eaeaea;
+}
+
+.PreguntaOptionInput:checked + .PreguntaOptionCheckmark {
+  background-color: #007bff;
+  border: 2px solid #007bff;
+}
+
+.PreguntaOptionCheckmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.PreguntaOptionInput:checked + .PreguntaOptionCheckmark:after {
+  display: block;
+}
+
+.PreguntaOptionCheckmark:after {
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
+  left: 4px;
+  top: 4px;
+  width: 4px;
+  height: 8px;
+}

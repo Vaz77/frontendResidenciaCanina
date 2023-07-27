@@ -6,6 +6,7 @@ import ServicesPage from "../ServicesPage/ServicesPage";
 import AppointmentsPage from "../AppointmentsPage/AppointmentsPage";
 import { NavLink } from "react-router-dom";
 import AlimentPage from "../AlimentPage/AlimentPage";
+import perroImage from "../../assets/fondoMel.png";
 
 const HomePage = () => {
   const [showImage, setShowImage] = useState(false);
@@ -60,6 +61,9 @@ const HomePage = () => {
           <h1 className="textoBienvenida">
             ¡Bienvenid@ a tu Guarderia Canina cerca de la ciudad!
           </h1>
+          <div className="perro-image-container">
+        <img src={perroImage} alt="Perro" className="perro-image" />
+      </div>
         </div>
         <div ref={infoPageRef} id="infoPage">
           {showInfoPage && <InfoPage />}
