@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { fetchAllAppointments } from "../../services/apiCalls";
 import { useSelector } from "react-redux";
 import { userData } from "../userSlice";
-import "./GetAllAppointments.css"; // Importa el archivo CSS aquí
+import "./GetAllAppointments.css";
 
 function GetAllAppointments() {
   const { credentials } = useSelector(userData);

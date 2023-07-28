@@ -59,3 +59,17 @@ export const fetchAllAppointments = async (token) => {
     throw error;
   }
 };
+
+export const fetchAllUsers = async (token) => {
+  try {
+    const response = await axios.get('http://localhost:3000/user/getAllUsers', {
+      headers: {
+        Authorization: `` 
+      }
+    });
+    return response.data;
+  } catch (error) {
+    console.error('Error al obtener los usuarios:', error);
+    throw error;
+  }
+};
