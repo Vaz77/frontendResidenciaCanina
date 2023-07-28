@@ -110,7 +110,7 @@ const Footer = () => {
         <NavLink className="inicio" onClick={handleAppointmentsClick}>
           <h5>Reservas</h5>
         </NavLink>
-        <NavLink as={NavLink} to="/nosotros" exact="true" className="inicio">
+        <NavLink as={NavLink} to="/getAllAppointments" exact="true" className="inicio">
           <h5>Sobre Nosotros</h5>
         </NavLink>
         <NavLink as={NavLink} to="/" exact="true" className="inicio">

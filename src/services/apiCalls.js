@@ -1,6 +1,5 @@
 import axios from "axios";
 import { useDispatch } from "react-redux";
-import { setToken } from "../pages/userSlice";
 
 export const registerUser = async (body) => {
   try {
@@ -24,7 +23,7 @@ export const loginUser = async (body) => {
 export const logoutUser = async (body) => {
   let res = await axios.post("http://localhost:3000/auth/logout", body);
   const authToken = res.data.token;
-  const dispatch = useDispatch(); // Agrega esta línea para obtener el dispatch
+  const dispatch = useDispatch();
   dispatch(setToken(authToken));
   return authToken;
 };
@@ -44,5 +43,19 @@ export const createAppointment = async (token, appointmentData) => {
     return response.data;
   } catch (error) {
     console.error("Error al crear la cita:", error);
+  }
+};
+
+export const fetchAllAppointments = async (token) => {
+  try {
+    const response = await axios.get('http://localhost:3000/appointment/getAllAppointments', {
+      headers: {
+        Authorization: ``,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    console.error('Error al obtener las citas:', error);
+    throw error;
   }
 };

@@ -1,0 +1,46 @@
+.get-all-appointments-container {
+  background-color: darkgreen;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.appointmentsList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 900px;
+}
+
+.appointmentCard {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  flex-basis: calc(33.33% - 20px);
+  box-sizing: border-box;
+  min-height: 200px;
+}
+
+.appointmentCard hr {
+  margin-top: 10px;
+  margin-bottom: 0;
+}
+
+.misCitas {
+  color: #fff;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.loadingAppointments {
+  color: #fff;
+  font-size: 18px;
+  margin-top: 20px;
+}
