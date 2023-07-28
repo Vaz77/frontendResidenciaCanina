@@ -107,3 +107,20 @@ export const fetchAllServices = async (token) => {
     throw error;
   }
 };
+
+export const deleteAppointment = async (token, appointmentId) => {
+  try {
+    const response = await axios.delete(
+      `http://localhost:3000/appointment/delete/${appointmentId}`,
+      {
+        headers: {
+          Authorization: ``
+        }
+      }
+    );
+    return response.data;
+  } catch (error) {
+    console.error('Error deleting appointment:', error);
+    throw error;
+  }
+};
