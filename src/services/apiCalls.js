@@ -91,7 +91,7 @@ export const fetchAllDogs = async (token) => {
   }
 };
 
-export const fetchAllServices = async (token) => {
+export const fetchAllServices = async () => {
   try {
     const response = await axios.get(
       "http://localhost:3000/service/getAllServices",
@@ -111,16 +111,34 @@ export const fetchAllServices = async (token) => {
 export const deleteAppointment = async (token, appointmentId) => {
   try {
     const response = await axios.delete(
-      `http://localhost:3000/appointment/delete/${appointmentId}`,
+      `http://localhost:3000/appointment/delete/${appointmentId}`, 
       {
         headers: {
-          Authorization: ``
-        }
+          Authorization: ``,
+        },
       }
     );
     return response.data;
   } catch (error) {
-    console.error('Error deleting appointment:', error);
+    console.error("Error deleting appointment:", error);
+    throw error;
+  }
+};
+
+export const updateServices = async (serviceData) => {
+  try {
+    const response = await axios.put(
+      `http://localhost:3000/service/update/${serviceData.id}`,
+      serviceData,
+      {
+        headers: {
+          Authorization: ``,
+        },
+      }
+    );
+    return response.data;
+  } catch (error) {
+    console.error('Error al actualizar el servicio:', error);
     throw error;
   }
 };

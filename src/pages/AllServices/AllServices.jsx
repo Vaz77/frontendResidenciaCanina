@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
+import { fetchAllServices, updateServices } from "../../services/apiCalls";
 import "./AllServices.css";
-import { fetchAllServices } from "../../services/apiCalls";
 
 const AllServices = () => {
   const [services, setServices] = useState([]);
+  const [editingService, setEditingService] = useState(null);
 
   useEffect(() => {
     getAllServices();
@@ -18,6 +19,27 @@ const AllServices = () => {
     }
   };
 
+  const handleEditService = (serviceId) => {
+    const serviceToEdit = services.find((service) => service.id === serviceId);
+    setEditingService(serviceToEdit);
+  };
+
+  const handleUpdateService = async () => {
+    try {
+      if (editingService && editingService.id) {
+        await updateServices(editingService);
+        setEditingService(null);
+        getAllServices();
+      } else {
+        console.error(
+          "El servicio que se está editando no tiene un ID válido."
+        );
+      }
+    } catch (error) {
+      console.error("Error al actualizar el servicio:", error);
+    }
+  };
+
   if (services.length === 0) {
     return <p>No hay servicios registrados</p>;
   }
@@ -28,9 +50,53 @@ const AllServices = () => {
       <div className="services-list">
         {services.map((service) => (
           <div key={service.id} className="service-card">
-            <p>Nombre del servicio: {service.name}</p>
-            <p>Descripción: {service.description}</p>
-            <p>Precio: {service.price}</p>
+            {editingService && editingService.id === service.id ? (
+              <div>
+                <input
+                  type="text"
+                  value={editingService.name}
+                  onChange={(e) =>
+                    setEditingService({
+                      ...editingService,
+                      name: e.target.value,
+                    })
+                  }
+                />
+                <input
+                  type="text"
+                  value={editingService.description}
+                  onChange={(e) =>
+                    setEditingService({
+                      ...editingService,
+                      description: e.target.value,
+                    })
+                  }
+                />
+                <input
+                  type="text"
+                  value={editingService.price}
+                  onChange={(e) =>
+                    setEditingService({
+                      ...editingService,
+                      price: e.target.value,
+                    })
+                  }
+                />
+                <button onClick={handleUpdateService}>Guardar</button>
+                <button onClick={() => setEditingService(null)}>
+                  Cancelar
+                </button>
+              </div>
+            ) : (
+              <div>
+                <p>Nombre del servicio: {service.name}</p>
+                <p>Descripción: {service.description}</p>
+                <p>Precio: {service.price}</p>
+                <button onClick={() => handleEditService(service.id)}>
+                  Editar
+                </button>
+              </div>
+            )}
           </div>
         ))}
       </div>
