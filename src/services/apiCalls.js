@@ -48,28 +48,45 @@ export const createAppointment = async (token, appointmentData) => {
 
 export const fetchAllAppointments = async (token) => {
   try {
-    const response = await axios.get('http://localhost:3000/appointment/getAllAppointments', {
-      headers: {
-        Authorization: ``,
-      },
-    });
+    const response = await axios.get(
+      "http://localhost:3000/appointment/getAllAppointments",
+      {
+        headers: {
+          Authorization: ``,
+        },
+      }
+    );
     return response.data;
   } catch (error) {
-    console.error('Error al obtener las citas:', error);
+    console.error("Error al obtener las citas:", error);
     throw error;
   }
 };
 
 export const fetchAllUsers = async (token) => {
   try {
-    const response = await axios.get('http://localhost:3000/user/getAllUsers', {
+    const response = await axios.get("http://localhost:3000/user/getAllUsers", {
       headers: {
-        Authorization: `` 
-      }
+        Authorization: ``,
+      },
     });
     return response.data;
   } catch (error) {
-    console.error('Error al obtener los usuarios:', error);
+    console.error("Error al obtener los usuarios:", error);
+    throw error;
+  }
+};
+
+export const fetchAllDogs = async (token) => {
+  try {
+    const response = await axios.get("http://localhost:3000/dog/getAllDogs", {
+      headers: {
+        Authorization: ``,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Error al obtener los perros:", error);
     throw error;
   }
 };
