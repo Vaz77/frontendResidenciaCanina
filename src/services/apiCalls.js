@@ -90,3 +90,20 @@ export const fetchAllDogs = async (token) => {
     throw error;
   }
 };
+
+export const fetchAllServices = async (token) => {
+  try {
+    const response = await axios.get(
+      "http://localhost:3000/service/getAllServices",
+      {
+        headers: {
+          Authorization: ``,
+        },
+      }
+    );
+    return response.data;
+  } catch (error) {
+    console.error("Error al obtener los servicios:", error);
+    throw error;
+  }
+};

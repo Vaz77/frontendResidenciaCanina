@@ -124,6 +124,9 @@ const Footer = () => {
         <NavLink as={NavLink} to="/allDogs" exact="true" className="inicio">
           <h5>Todos los perros</h5>
         </NavLink>
+        <NavLink as={NavLink} to="/allServices" exact="true" className="inicio">
+          <h5>Todos los servicios</h5>
+        </NavLink>
         <NavLink as={NavLink} to="/" exact="true" className="inicio">
           <h5 onClick={handleLoginModalOpen}>Iniciar Sesión</h5>
         </NavLink>
