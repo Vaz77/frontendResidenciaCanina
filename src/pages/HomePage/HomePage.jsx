@@ -7,6 +7,7 @@ import AppointmentsPage from "../AppointmentsPage/AppointmentsPage";
 import { NavLink } from "react-router-dom";
 import AlimentPage from "../AlimentPage/AlimentPage";
 import perroImage from "../../assets/fondoMel.png";
+import { useSelector } from "react-redux";
 
 const HomePage = () => {
   const [showImage, setShowImage] = useState(false);
@@ -30,6 +31,9 @@ const HomePage = () => {
     setShowServicesPage(rect.bottom >= 0);
     setShowAppointmentsPage(rect.bottom >= 0);
   }, []);
+
+  const userName = useSelector((state) => state.user.data.name);
+
   const handleAppointmentsClick = () => {
     const appointmentsPageSection = document.getElementById("appointmentsPage");
     if (appointmentsPageSection) {
@@ -59,11 +63,11 @@ const HomePage = () => {
             <div className="reservar-cita-rope"></div>
           </div>
           <h1 className="textoBienvenida">
-            ¡Bienvenid@ a tu Guarderia Canina cerca de la ciudad!
+            ¡Bienvenid@ {userName} a tu Guarderia Canina cerca de la ciudad!
           </h1>
           <div className="perro-image-container">
-        <img src={perroImage} alt="Perro" className="perro-image" />
-      </div>
+            <img src={perroImage} alt="Perro" className="perro-image" />
+          </div>
         </div>
         <div ref={infoPageRef} id="infoPage">
           {showInfoPage && <InfoPage />}

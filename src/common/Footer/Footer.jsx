@@ -6,6 +6,7 @@ import twitterIcon from "../../assets/twitter(1).png";
 import LoginForm from "../LoginForm/LoginForm";
 import RegisterForm from "../RegisterForm/RegisterForm";
 import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Footer = () => {
   const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
@@ -24,6 +25,8 @@ const Footer = () => {
   const handleRegisterModalClose = () => {
     setIsRegisterModalOpen(false);
   };
+  const userName = useSelector((state) => state.user.data.name);
+
   const handleInstalacionesClick = () => {
     const infoPageSection = document.getElementById("infoPage");
     if (infoPageSection) {

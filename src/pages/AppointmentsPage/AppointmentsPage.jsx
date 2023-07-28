@@ -1,8 +1,74 @@
-import React from "react";
+import React, { useState } from "react";
 import "./AppointmentsPage.css";
 import icon1 from "../../assets/flechaHaciaAbajo.png";
+import { createAppointment } from "../../services/apiCalls";
+import { useSelector } from 'react-redux';
+import { userData } from '../userSlice';
 
 const AppointmentsPage = () => {
+  const [time, setTime] = useState('');
+  const [date, setDate] = useState('');
+  const [observations, setObservations] = useState('');
+  const [dog_name, setDog_name] = useState('');
+  const [dog_id, setDog_id] = useState('');
+  const [service_id, setService_id] = useState('');
+  const [duration, setDuration] = useState('');
+  const { credentials } = useSelector(userData);
+  
+
+  const handleInputChange = (e) => {
+  const { name, value } = e.target;
+  switch (name) {
+      case 'time':
+      setTime(value);
+      break;
+      case 'date':
+      setDate(value);
+      break;
+      case 'observations':
+      setObservations(value);
+      break;
+      case 'dog_id':
+      setDog_id(value);
+      break;
+      case 'dog_name':
+        setDog_name(value);
+        break;
+      case 'service_id':
+      setService_id(value);
+      break;
+      case 'duration':
+        setDuration(value);
+        break;
+      default:
+      break;
+  }
+  };
+  const handleSubmit = async (e) => {
+      e.preventDefault();
+      try {
+          const appointmentData = {
+            date,
+            time,
+            observations,
+            dog_id,
+            dog_name,
+            duration,
+            service_id,
+          };
+          const response = await createAppointment(credentials.token, appointmentData);
+          setDuration('');
+          setTime('');
+          setDate('');
+          setObservations('');
+          setDog_id('');
+          setDog_name('');
+          setService_id('');
+        } catch (error) {
+        console.error('Error al crear la cita:', error);
+    } 
+  }
+
   return (
     <div className="appointments-page">
       <h2 className="textoTittleForm">¿Cómo reservar tu plaza?</h2>
@@ -29,60 +95,86 @@ const AppointmentsPage = () => {
         <h2 className="textReserva">
           Rellena los datos y un profesional se pondrá en contacto contigo
         </h2>
-        <form>
-          <div className="form-group">
-            <label htmlFor="name">Nombre:</label>
-            <input type="text" id="name" name="name" required />
-          </div>
-          <div className="form-group">
-            <label htmlFor="surname">Apellidos:</label>
-            <input type="text" id="surname" name="surname" required />
-          </div>
-          <div className="form-group">
-            <label htmlFor="phone">Teléfono:</label>
-            <input type="tel" id="phone" name="phone" required />
-          </div>
-          <div className="form-group">
-            <label htmlFor="email">Correo electrónico:</label>
-            <input type="email" id="email" name="email" required />
-          </div>
-          <div className="form-group">
-            <label htmlFor="dogName">Nombre de tu perro:</label>
-            <input type="text" id="dogName" name="dogName" required />
-          </div>
-          <div className="form-group">
-            <label htmlFor="dogBreed">Raza de tu perro:</label>
-            <input type="text" id="dogBreed" name="dogBreed" required />
-          </div>
-          <div className="form-group">
-            <label htmlFor="appointmentDate">Fecha de la cita:</label>
+        <form onSubmit={handleSubmit}>
+        <div className="form-group">
+            <label htmlFor="date">Fecha de la cita:</label>
             <input
-              type="date"
-              id="appointmentDate"
-              name="appointmentDate"
+              type="text"
+              id="date"
+              name="date"
               required
+              value={date}
+              onChange={handleInputChange}
             />
           </div>
           <div className="form-group">
-            <label htmlFor="appointmentTime">Hora de la cita:</label>
+            <label htmlFor="time">Hora de la cita:</label>
             <input
-              type="time"
-              id="appointmentTime"
-              name="appointmentTime"
+              type="text"
+              id="time"
+              name="time"
               required
+              value={time}
+              onChange={handleInputChange}
             />
           </div>
           <div className="form-group">
-            <label htmlFor="additionalInfo">Información adicional:</label>
+            <label htmlFor="dog_name">Nombre del perro:</label>
+            <input
+              type="text"
+              id="dog_name"
+              name="dog_name"
+              required
+              value={dog_name}
+              onChange={handleInputChange}
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="service_id">ID del servicio:</label>
+            <input
+              type="number"
+              id="service_id"
+              name="service_id"
+              required
+              value={service_id}
+              onChange={handleInputChange}
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="duration">Duración:</label>
+            <input
+              type="text"
+              id="duration"
+              name="duration"
+              required
+              value={duration}
+              onChange={handleInputChange}
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="dog_id">ID del perro:</label>
+            <input
+              type="number"
+              id="dog_id"
+              name="dog_id"
+              required
+              value={dog_id}
+              onChange={handleInputChange}
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="observations">Observaciones:</label>
             <textarea
-              id="additionalInfo"
-              name="additionalInfo"
+              id="observations"
+              name="observations"
               rows="4"
+              value={observations}
+              onChange={handleInputChange}
             ></textarea>
+          </div>
             <button className="custom-button" type="submit">
               Reservar cita
             </button>
-          </div>
         </form>
       </section>
     </div>
