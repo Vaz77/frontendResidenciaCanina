@@ -10,11 +10,11 @@
 
 .footer-container {
   display: flex;
-  flex-wrap: wrap;
   justify-content: space-between;
+  align-items: center;
   max-width: 900px;
-  margin: 0 auto;
   background-color: rgb(46, 46, 46);
+  margin-left: 30em;
 }
 
 .footer-content {
@@ -25,8 +25,8 @@
 }
 
 .footer-content h3 {
-  margin-top: 1em;
   padding: 0;
+  margin: 0;
 }
 
 .footer-links {
@@ -51,7 +51,6 @@
 
 .social-icons a {
   color: #fff;
-  font-size: 1.5rem;
   margin: 0 0.5rem;
   text-decoration: none;
 }
@@ -67,6 +66,7 @@
   display: flex;
   justify-content: center;
   margin-top: 1rem;
+  gap: 0.5rem;
 }
 
 .footer-social-icons a {
@@ -74,8 +74,8 @@
 }
 
 .footer-social-icons img {
-  width: 30px;
-  height: 30px;
+  width: 25px;
+  height: 25px;
 }
 
 .nav-links {
@@ -84,7 +84,7 @@
   display: flex;
   justify-content: space-around;
   flex-direction: row;
-  font-size: 1.5em;
+  font-size: 1.2em;
   background-color: rgb(232, 232, 232);
 }
 
@@ -115,6 +115,23 @@
   transform: scaleX(1);
 }
 
+.footer-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer-social {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer-rights {
+  text-align: center;
+}
+
 @media screen and (max-width: 768px) {
   .footer-content h3 {
     font-size: 0.5em;
@@ -124,14 +141,18 @@
   }
   .footer-links a,
   .social-icons a {
-    font-size: 1rem;
+    font-size: 1.2rem;
   }
   .nav-links {
     flex-direction: row;
     justify-content: space-around;
-    font-size: 0.7rem;
+    font-size: 1.1rem;
   }
   .footer {
     max-height: 26%;
+  }
+
+  .derechos {
+    display: none;
   }
 }

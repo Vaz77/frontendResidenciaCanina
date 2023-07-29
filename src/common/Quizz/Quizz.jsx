@@ -8,6 +8,15 @@ const Quizz = () => {
   const [slideOut, setSlideOut] = useState(false);
   const preguntas = [
     {
+      pregunta: "¿Cual es su actividad diaria?",
+      opciones: [
+        "1 hora al día",
+        "2 horas al día",
+        "3 horas al día",
+        "Mas de 3 horas al día",
+      ],
+    },
+    {
       pregunta: "¿Que tamaño tiene?",
       opciones: ["Pequeño", "Mediano", "Grande"],
     },
@@ -18,15 +27,6 @@ const Quizz = () => {
         "Entre 10 y 20kg",
         "Entre 20 y 35kg",
         "Mas de 40kg",
-      ],
-    },
-    {
-      pregunta: "¿Cual es su actividad diaria?",
-      opciones: [
-        "1 hora al día",
-        "2 horas al día",
-        "3 horas al día",
-        "Mas de 3 horas al día",
       ],
     },
     {

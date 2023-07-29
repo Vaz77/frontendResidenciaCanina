@@ -7,12 +7,20 @@ import LoginForm from "../LoginForm/LoginForm";
 import RegisterForm from "../RegisterForm/RegisterForm";
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { logout } from "../../pages/userSlice";
+import { useDispatch } from "react-redux";
 
 const Footer = () => {
   const user = useSelector((state) => state.user);
   const token = user.credentials.token;
   const role = user.data.roleId;
   const name = user.data.name;
+
+  const dispatch = useDispatch();
+
+  const handleLogout = () => {
+    dispatch(logout());
+  };
   const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const handleLoginModalOpen = () => {
@@ -112,16 +120,28 @@ const Footer = () => {
         <NavLink className="inicio" onClick={handleAppointmentsClick}>
           <h5>Reservas</h5>
         </NavLink>
-        <NavLink as={NavLink} to="/" exact="true" className="inicio">
-          <h5 onClick={handleLoginModalOpen}>Iniciar Sesión</h5>
-        </NavLink>
+        {token ? (
+          <NavLink
+            as={NavLink}
+            to="/"
+            exact="true"
+            className="iniciarCerrar"
+            onClick={handleLogout}
+          >
+            <h5>Cerrar sesión</h5>
+          </NavLink>
+        ) : (
+          <NavLink as={NavLink} to="/" exact="true" className="inicio">
+            <h5 onClick={handleLoginModalOpen}>Iniciar Sesión</h5>
+          </NavLink>
+        )}
       </div>
       <div className="footer-container">
-        <div className="footer-content">
-          <h3>Teléfono: 692157845</h3>
-          <h3 className="textoEmailFooter">Email: info@guarderiacanina.com</h3>
+        <div className="footer-content footer-info">
+          <p>Teléfono: 692157845</p>
+          <p className="textoEmailFooter">Email: info@guarderiacanina.com</p>
         </div>
-        <div className="footer-content">
+        <div className="footer-content footer-social">
           <div className="footer-social-icons">
             <a
               href="https://www.instagram.com/"
@@ -146,7 +166,7 @@ const Footer = () => {
             </a>
           </div>
         </div>
-        <p>
+        <p className="footer-content footer-rights">
           &copy; {new Date().getFullYear()} Guarderia Canina. Todos los derechos
           reservados.
         </p>

@@ -28,7 +28,7 @@ body {
   display: inline-block;
   animation: caidaDesdeArriba 2s;
   border-radius: 5%;
-  background-color: rgba(31, 31, 31, 0.318);
+  background-color: rgba(31, 31, 31, 0.113);
   color: white;
   margin-top: 5em;
 }
@@ -69,11 +69,8 @@ body {
 }
 
 .reservar-cita-texto {
-  font-size: 18px;
-  font-family: h;
+  font-size: 16px;
   color: #ff0000;
-  text-transform: uppercase;
-  font-weight: bold;
   text-decoration: none;
 }
 
@@ -113,7 +110,7 @@ body {
 
 .perro-image-container {
   position: fixed;
-  bottom: 9.3em;
+  bottom: 11.4em;
   left: 50%;
   transform: translateX(-50%);
   z-index: 1;
@@ -183,16 +180,14 @@ body {
 
 @media screen and (max-width: 768px) {
   .textoBienvenida {
-    .textoBienvenida {
-      font-size: 1.2rem;
-      margin-top: 2rem;
-      text-align: center;
-    }
+    font-size: 1.5em;
+    margin-top: 2rem;
+    text-align: center;
   }
   .reservar-cita-container {
     width: 50px;
     height: 120px;
-    margin-top: -12em;
+    margin-top: -10em;
     margin-left: -15em;
   }
 

@@ -3,9 +3,7 @@
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-color: purple;
-  background-repeat: no-repeat;
-  background-size: cover;
+  background-color: #c7c7c7;
   padding: 30px;
   font-family: Arial, sans-serif;
 }
@@ -13,35 +11,30 @@
 .aliment {
   max-width: 800px;
   width: 100%;
-  background: hsl(30, 24%, 85%);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-  padding: 20px;
+  background: linear-gradient(135deg, #f4b400, #e93a8b);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+  padding: 30px;
   display: flex;
   flex-direction: column;
   text-align: center;
   margin-top: -10em;
-  background-color: rgb(239, 191, 239);
+  color: #ffffff;
 }
 
 .title {
-  font-size: 32px;
+  font-size: 36px;
   margin-bottom: 20px;
-  color: #333333;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .icon {
-  font-size: 36px;
+  font-size: 40px;
   margin: 0 10px;
 }
 
 .instructions {
-  font-size: 18px;
-  color: #666666;
-  margin-bottom: 20px;
+  font-size: 20px;
+  margin-bottom: 30px;
 }
 
 .QuizzContainer {
