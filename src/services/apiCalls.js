@@ -111,7 +111,7 @@ export const fetchAllServices = async () => {
 export const deleteAppointment = async (token, appointmentId) => {
   try {
     const response = await axios.delete(
-      `http://localhost:3000/appointment/delete/${appointmentId}`, 
+      `http://localhost:3000/appointment/delete/${appointmentId}`,
       {
         headers: {
           Authorization: ``,
@@ -138,7 +138,25 @@ export const updateServices = async (serviceData) => {
     );
     return response.data;
   } catch (error) {
-    console.error('Error al actualizar el servicio:', error);
+    console.error("Error al actualizar el servicio:", error);
+    throw error;
+  }
+};
+
+export const updateUser = async (userData) => {
+  try {
+    const response = await axios.put(
+      `http://localhost:3000/user/profile/${userData.id}`,
+      userData,
+      {
+        headers: {
+          Authorization: ``,
+        },
+      }
+    );
+    return response.data;
+  } catch (error) {
+    console.error("Error al modificar el usuario:", error);
     throw error;
   }
 };
