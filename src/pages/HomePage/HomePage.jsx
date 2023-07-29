@@ -14,6 +14,7 @@ const HomePage = () => {
   const [showInfoPage, setShowInfoPage] = useState(false);
   const [showServicesPage, setShowServicesPage] = useState(false);
   const [showAppointmentsPage, setShowAppointmentsPage] = useState(false);
+  const [showAlimentPage, setShowAlimentPage] = useState(false);
   const [showCards, setShowCards] = useState(false);
   const infoPageRef = useRef(null);
   const servicesPageRef = useRef(null);
@@ -35,6 +36,7 @@ const HomePage = () => {
     setShowInfoPage(rect.top < window.innerHeight && rect.bottom >= 0);
     setShowServicesPage(rect.bottom >= 0);
     setShowAppointmentsPage(rect.bottom >= 0);
+    setShowAlimentPage(rect.bottom >= 0);
   }, []);
 
   const userName = useSelector((state) => state.user.data.name);
@@ -60,6 +62,22 @@ const HomePage = () => {
     <>
       <div className="main-content">
         <div className={`generalHome ${showImage ? "show-image" : ""}`}>
+          <div className="reservar-cita-container">
+            <div className="reservar-cita-triangle"></div>
+            <div className="reservar-cita-shape"></div>
+            <NavLink
+              className="reservar-cita-texto"
+              onClick={handleAppointmentsClick}
+            >
+              <h5>¡Haz tu reserva aquí!</h5>
+            </NavLink>
+            <div className="reservar-cita-rope"></div>
+          </div>
+          <h1 className="textoBienvenida">
+            {userName
+              ? `¡Bienvenid@ ${userName} a tu Guarderia Canina cerca de la ciudad!`
+              : "¡Bienvenid@ a tu Guarderia Canina cerca de la ciudad!"}
+          </h1>
           {showCards && (
             <div className="card-container">
               <NavLink
@@ -96,22 +114,6 @@ const HomePage = () => {
               </NavLink>
             </div>
           )}
-          <div className="reservar-cita-container">
-            <div className="reservar-cita-triangle"></div>
-            <div className="reservar-cita-shape"></div>
-            <NavLink
-              className="reservar-cita-texto"
-              onClick={handleAppointmentsClick}
-            >
-              <h5>¡Haz tu reserva aquí!</h5>
-            </NavLink>
-            <div className="reservar-cita-rope"></div>
-          </div>
-          <h1 className="textoBienvenida">
-            {userName
-              ? `¡Bienvenid@ ${userName} a tu Guarderia Canina cerca de la ciudad!`
-              : "¡Bienvenid@ a tu Guarderia Canina cerca de la ciudad!"}
-          </h1>
           <div className="perro-image-container">
             <img src={perroImage} alt="Perro" className="perro-image" />
           </div>
@@ -126,7 +128,7 @@ const HomePage = () => {
           {showAppointmentsPage && <AppointmentsPage />}
         </div>
         <div ref={alimentPageRef} id="alimentPage">
-          <AlimentPage />
+          {showAlimentPage && <AlimentPage />}
         </div>
         <Footer />
       </div>

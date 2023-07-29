@@ -134,21 +134,60 @@ body {
 .card {
   width: 200px;
   height: 150px;
-  background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  background-color: #aaaaaa;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px rgb(255, 255, 255);
   padding: 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.5rem;
-  color: #333;
+  font-size: 1.8rem;
+  color: rgb(0, 0, 0);
+  margin-bottom: -9em;
+  margin-left: 1em;
+  transition: 0.3s;
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  text-decoration: none;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #e7e7e731;
+  border-radius: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 1rem;
+  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
+  transform: translateX(100%);
+  transition: transform 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
+  background-color: #aaaaaa;
+}
+
+.card:hover::before {
+  transform: translateX(0);
 }
 
 @media screen and (max-width: 768px) {
   .textoBienvenida {
-    margin-left: 0.9em;
-    margin-top: 1em;
+    .textoBienvenida {
+      font-size: 1.2rem;
+      margin-top: 2rem;
+      text-align: center;
+    }
   }
   .reservar-cita-container {
     width: 50px;
@@ -178,5 +217,17 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+  .card-container {
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+  }
+
+  .card {
+    width: 150px;
+    height: 100px;
+    margin: 0 0 1rem 0;
+    font-size: 1.5rem;
   }
 }
