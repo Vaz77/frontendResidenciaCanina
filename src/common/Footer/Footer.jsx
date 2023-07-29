@@ -9,6 +9,10 @@ import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 const Footer = () => {
+  const user = useSelector((state) => state.user);
+  const token = user.credentials.token;
+  const role = user.data.roleId;
+  const name = user.data.name;
   const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const handleLoginModalOpen = () => {
@@ -25,8 +29,6 @@ const Footer = () => {
   const handleRegisterModalClose = () => {
     setIsRegisterModalOpen(false);
   };
-  const userName = useSelector((state) => state.user.data.name);
-
   const handleInstalacionesClick = () => {
     const infoPageSection = document.getElementById("infoPage");
     if (infoPageSection) {
@@ -110,23 +112,36 @@ const Footer = () => {
         <NavLink className="inicio" onClick={handleAppointmentsClick}>
           <h5>Reservas</h5>
         </NavLink>
-        <NavLink
-          as={NavLink}
-          to="/getAllAppointments"
-          exact="true"
-          className="inicio"
-        >
-          <h5>Sobre Nosotros</h5>
-        </NavLink>
-        <NavLink as={NavLink} to="/allUsers" exact="true" className="inicio">
-          <h5>Todos los usuarios</h5>
-        </NavLink>
-        <NavLink as={NavLink} to="/allDogs" exact="true" className="inicio">
-          <h5>Todos los perros</h5>
-        </NavLink>
-        <NavLink as={NavLink} to="/allServices" exact="true" className="inicio">
-          <h5>Todos los servicios</h5>
-        </NavLink>
+        {token && role === 1 && (
+          <NavLink
+            as={NavLink}
+            to="/getAllAppointments"
+            exact="true"
+            className="inicio"
+          >
+            <h5>Todas las citas</h5>
+          </NavLink>
+        )}
+        {token && role === 1 && (
+          <NavLink as={NavLink} to="/allUsers" exact="true" className="inicio">
+            <h5>Todos los usuarios</h5>
+          </NavLink>
+        )}
+        {token && role === 1 && (
+          <NavLink as={NavLink} to="/allDogs" exact="true" className="inicio">
+            <h5>Todos los perros</h5>
+          </NavLink>
+        )}
+        {token && role === 1 && (
+          <NavLink
+            as={NavLink}
+            to="/allServices"
+            exact="true"
+            className="inicio"
+          >
+            <h5>Todos los servicios</h5>
+          </NavLink>
+        )}
         <NavLink as={NavLink} to="/" exact="true" className="inicio">
           <h5 onClick={handleLoginModalOpen}>Iniciar Sesión</h5>
         </NavLink>
