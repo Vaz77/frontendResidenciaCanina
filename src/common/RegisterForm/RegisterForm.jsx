@@ -3,8 +3,6 @@ import React, { useState } from "react";
 import "./RegisterForm.css";
 import { registerUser } from "../../services/apiCalls";
 import "./RegisterForm.css";
-import { useDispatch } from "react-redux";
-import { setToken } from "../../pages/userSlice";
 
 const RegisterForm = ({ isOpen, onRequestClose }) => {
   const [formData, setFormData] = useState({
@@ -23,12 +21,11 @@ const RegisterForm = ({ isOpen, onRequestClose }) => {
       [id]: value,
     }));
   };
-  const dispatch = useDispatch();
+
   const handleRegister = async (event) => {
     event.preventDefault();
     try {
       const token = await registerUser(formData);
-      dispatch(setToken(token));
     } catch (error) {
       console.error(error);
     }

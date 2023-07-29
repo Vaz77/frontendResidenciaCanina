@@ -5,33 +5,35 @@ import { NavLink } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { loginUser } from "../../services/apiCalls";
+import { login } from "../../pages/userSlice";
 
 const LoginForm = ({ isOpen, onRequestClose, onRegisterModalOpen }) => {
-  const [user, setUser] = useState({
+  const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const inputHandler = ({ target }) => {
-    let { name, value } = target;
-    setUser((prevState) => ({
+  const inputHandler = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevState) => ({
       ...prevState,
       [name]: value,
     }));
   };
+
   const submitHandler = (e) => {
     e.preventDefault();
-    loginUser(user)
+    const { email, password } = formData;
+    loginUser({ email, password })
       .then((token) => {
         dispatch(
           login({
             token: token,
-            name: user.name,
-            email: user.email,
+            email: formData.email,
+            password: formData.password,
           })
         );
-        console.log("Token recibido:", token);
         navigate("/");
       })
       .catch((error) => {
@@ -54,9 +56,9 @@ const LoginForm = ({ isOpen, onRequestClose, onRegisterModalOpen }) => {
             <input
               type="email"
               id="email"
-              onChange={(e) => {
-                inputHandler(e);
-              }}
+              name="email"
+              value={formData.email}
+              onChange={inputHandler}
             />
           </div>
           <div className="form-group">
@@ -64,9 +66,9 @@ const LoginForm = ({ isOpen, onRequestClose, onRegisterModalOpen }) => {
             <input
               type="password"
               id="password"
-              onChange={(e) => {
-                inputHandler(e);
-              }}
+              name="password"
+              value={formData.password}
+              onChange={inputHandler}
             />
           </div>
           <NavLink as={NavLink} to="/" exact="true" className="inicio">
@@ -78,12 +80,7 @@ const LoginForm = ({ isOpen, onRequestClose, onRegisterModalOpen }) => {
             <button className="btn btn-cancel" onClick={onRequestClose}>
               Cancelar
             </button>
-            <button
-              className="btn btn-login"
-              onClick={(e) => {
-                submitHandler(e, user);
-              }}
-            >
+            <button className="btn btn-login" onClick={submitHandler}>
               Iniciar Sesión
             </button>
           </div>

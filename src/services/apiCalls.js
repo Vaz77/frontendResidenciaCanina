@@ -10,13 +10,15 @@ export const registerUser = async (body) => {
     console.error("Error during registration:", error);
   }
 };
-
-export const loginUser = async (body) => {
+export const loginUser = async (formData) => {
   try {
-    let res = await axios.post("http://localhost:3000/auth/login", body);
-    return res.data.token;
+    const response = await axios.post(
+      "http://localhost:3000/auth/login",
+      formData
+    );
+    return response.data.token;
   } catch (error) {
-    throw new Error("Inicio de sesión fallido. Verifica tus credenciales.");
+    throw error;
   }
 };
 
