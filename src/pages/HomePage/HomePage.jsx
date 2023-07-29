@@ -14,10 +14,14 @@ const HomePage = () => {
   const [showInfoPage, setShowInfoPage] = useState(false);
   const [showServicesPage, setShowServicesPage] = useState(false);
   const [showAppointmentsPage, setShowAppointmentsPage] = useState(false);
+  const [showCards, setShowCards] = useState(false);
   const infoPageRef = useRef(null);
   const servicesPageRef = useRef(null);
   const appointmentsPageRef = useRef(null);
   const alimentPageRef = useRef(null);
+  const user = useSelector((state) => state.user);
+  const token = user.credentials.token;
+  const role = user.data.roleId;
 
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -34,6 +38,10 @@ const HomePage = () => {
   }, []);
 
   const userName = useSelector((state) => state.user.data.name);
+
+  useEffect(() => {
+    setShowCards(role === 1);
+  }, [role]);
 
   const handleAppointmentsClick = () => {
     const appointmentsPageSection = document.getElementById("appointmentsPage");
@@ -52,6 +60,42 @@ const HomePage = () => {
     <>
       <div className="main-content">
         <div className={`generalHome ${showImage ? "show-image" : ""}`}>
+          {showCards && (
+            <div className="card-container">
+              <NavLink
+                as={NavLink}
+                to="/getAllAppointments"
+                exact="true"
+                className="inicio card"
+              >
+                <h5>Todas las citas</h5>
+              </NavLink>
+              <NavLink
+                as={NavLink}
+                to="/allUsers"
+                exact="true"
+                className="inicio card"
+              >
+                <h5>Todos los usuarios</h5>
+              </NavLink>
+              <NavLink
+                as={NavLink}
+                to="/allDogs"
+                exact="true"
+                className="inicio card"
+              >
+                <h5>Todos los perros</h5>
+              </NavLink>
+              <NavLink
+                as={NavLink}
+                to="/allServices"
+                exact="true"
+                className="inicio card"
+              >
+                <h5>Todos los servicios</h5>
+              </NavLink>
+            </div>
+          )}
           <div className="reservar-cita-container">
             <div className="reservar-cita-triangle"></div>
             <div className="reservar-cita-shape"></div>

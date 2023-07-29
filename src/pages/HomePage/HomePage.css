@@ -125,6 +125,26 @@ body {
   max-width: 800px;
 }
 
+.card-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 2rem;
+}
+
+.card {
+  width: 200px;
+  height: 150px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: #333;
+}
+
 @media screen and (max-width: 768px) {
   .textoBienvenida {
     margin-left: 0.9em;
