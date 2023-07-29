@@ -18,6 +18,7 @@ const HomePage = () => {
   const servicesPageRef = useRef(null);
   const appointmentsPageRef = useRef(null);
   const alimentPageRef = useRef(null);
+
   useEffect(() => {
     const timeout = setTimeout(() => {
       setShowImage(true);
@@ -63,7 +64,9 @@ const HomePage = () => {
             <div className="reservar-cita-rope"></div>
           </div>
           <h1 className="textoBienvenida">
-            ¡Bienvenid@ {userName} a tu Guarderia Canina cerca de la ciudad!
+            {userName
+              ? `¡Bienvenid@ ${userName} a tu Guarderia Canina cerca de la ciudad!`
+              : "¡Bienvenid@ a tu Guarderia Canina cerca de la ciudad!"}
           </h1>
           <div className="perro-image-container">
             <img src={perroImage} alt="Perro" className="perro-image" />
