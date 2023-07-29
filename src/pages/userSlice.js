@@ -8,18 +8,18 @@ export const userSlice = createSlice({
     },
     data: {
       name: "",
-      role: "2",
+      roleId: "2",
     },
   },
   reducers: {
     login: (state, action) => {
       let { payload } = action;
       console.log("Login - Token:", payload.token);
-      console.log("Login - Role:", payload.role);
+      console.log("Login - Role:", payload.roleId);
       console.log("Login - Name:", payload.name);
       state.credentials.token = payload.token;
       state.data.name = payload.name;
-      state.data.role = payload.role;
+      state.data.roleId = payload.roleId;
     },
     logout: (state) => {
       return {

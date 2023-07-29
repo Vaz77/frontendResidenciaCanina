@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { loginUser } from "../../services/apiCalls";
 import { login } from "../../pages/userSlice";
+import jwt_decode from "jwt-decode";
 
 const LoginForm = ({ isOpen, onRequestClose, onRegisterModalOpen }) => {
   const [formData, setFormData] = useState({
@@ -27,11 +28,14 @@ const LoginForm = ({ isOpen, onRequestClose, onRegisterModalOpen }) => {
     const { email, password } = formData;
     loginUser({ email, password })
       .then((token) => {
+        const decodedToken = jwt_decode(token);
         dispatch(
           login({
             token: token,
             email: formData.email,
             password: formData.password,
+            name: decodedToken.name,
+            roleId: decodedToken.roleId
           })
         );
         navigate("/");
