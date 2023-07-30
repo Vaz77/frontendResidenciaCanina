@@ -195,4 +195,7 @@ textarea {
   .how-to-reserve {
     margin-right: 2.5em;
   }
+  .custom-button{
+    margin-left: 0.1em;
+  }
 }

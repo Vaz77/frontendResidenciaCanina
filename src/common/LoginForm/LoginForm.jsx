@@ -35,7 +35,7 @@ const LoginForm = ({ isOpen, onRequestClose, onRegisterModalOpen }) => {
             email: formData.email,
             password: formData.password,
             name: decodedToken.name,
-            roleId: decodedToken.roleId
+            roleId: decodedToken.roleId,
           })
         );
         onRequestClose();
@@ -46,7 +46,6 @@ const LoginForm = ({ isOpen, onRequestClose, onRegisterModalOpen }) => {
       });
   };
 
-  
   return (
     <Modal
       isOpen={isOpen}

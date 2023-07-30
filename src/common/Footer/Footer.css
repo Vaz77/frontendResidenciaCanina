@@ -93,7 +93,7 @@
   justify-content: space-around;
   flex-direction: row;
   font-size: 1.2em;
-  background-color: #bbcfc0;
+  background-color: #b0c5b5;
 }
 
 .nav-links a {
@@ -154,7 +154,7 @@
   .nav-links {
     flex-direction: row;
     justify-content: space-around;
-    font-size: 0.8rem;
+    font-size: 0.7rem;
   }
   .footer {
     max-height: 26%;

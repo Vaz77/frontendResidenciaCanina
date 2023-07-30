@@ -6,6 +6,7 @@ import ServicesPage from "../ServicesPage/ServicesPage";
 import AppointmentsPage from "../AppointmentsPage/AppointmentsPage";
 import { NavLink } from "react-router-dom";
 import AlimentPage from "../AlimentPage/AlimentPage";
+import Ubication from "../Ubication/Ubication";
 import perroImage from "../../assets/fondoMel.png";
 import { useSelector } from "react-redux";
 import { Carousel } from "react-responsive-carousel";
@@ -21,11 +22,13 @@ const HomePage = () => {
   const [showServicesPage, setShowServicesPage] = useState(false);
   const [showAppointmentsPage, setShowAppointmentsPage] = useState(false);
   const [showAlimentPage, setShowAlimentPage] = useState(false);
+  const [showUbicationPage, setShowUbicationPage] = useState(false);
   const [showCards, setShowCards] = useState(false);
   const infoPageRef = useRef(null);
   const servicesPageRef = useRef(null);
   const appointmentsPageRef = useRef(null);
   const alimentPageRef = useRef(null);
+  const ubicationPageRef = useRef(null);
   const user = useSelector((state) => state.user);
   const token = user.credentials.token;
   const role = user.data.roleId;
@@ -43,6 +46,7 @@ const HomePage = () => {
     setShowServicesPage(rect.bottom >= 0);
     setShowAppointmentsPage(rect.bottom >= 0);
     setShowAlimentPage(rect.bottom >= 0);
+    setShowUbicationPage(rect.bottom >= 0);
   }, []);
 
   const userName = useSelector((state) => state.user.data.name);
@@ -161,6 +165,9 @@ const HomePage = () => {
         </div>
         <div ref={alimentPageRef} id="alimentPage">
           {showAlimentPage && <AlimentPage />}
+        </div>
+        <div ref={ubicationPageRef} id="ubicationPage">
+          {showUbicationPage && <Ubication />}
         </div>
         <Footer />
       </div>
