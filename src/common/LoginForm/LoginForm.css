@@ -3,11 +3,11 @@
   top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: rgb(207, 206, 206);
+  background-color: #c0b59f;
   padding: 30px;
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  width: 400px;
+  width: 450px;
   max-width: 90%;
   display: flex;
   justify-content: center;

@@ -3,7 +3,7 @@
   flex-direction: column;
   align-items: center;
   padding: 40px;
-  background-color: #f7b84b;
+  background-color: #c0b59f;
   min-height: 100vh;
 }
 
@@ -139,7 +139,6 @@ textarea {
   transform: scale(1.4);
 }
 
-/* Estilos del botón */
 .custom-button {
   background-image: linear-gradient(135deg, #f1c40f, #e67e22);
   color: white;

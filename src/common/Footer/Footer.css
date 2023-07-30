@@ -15,11 +15,9 @@
   max-width: 1900px;
   background-color: rgb(46, 46, 46);
   max-height: 80px;
-  
-  
 }
 
-.textPhone{
+.textPhone {
   margin: 1em;
 }
 
@@ -35,7 +33,7 @@
   margin: 0;
 }
 
-.footerDerechos{
+.footerDerechos {
   margin: 1em;
 }
 
@@ -95,7 +93,7 @@
   justify-content: space-around;
   flex-direction: row;
   font-size: 1.2em;
-  background-color: rgb(232, 232, 232);
+  background-color: #bbcfc0;
 }
 
 .nav-links a {

@@ -119,9 +119,11 @@ const Footer = () => {
         <NavLink className="inicio" onClick={handleAppointmentsClick}>
           <h5>Reservas</h5>
         </NavLink>
+        {token && (
         <NavLink as={NavLink} to="/userAppointment" exact="true">
           <h5>Mis citas</h5>
         </NavLink>
+        )}
         {token ? (
           <NavLink
             as={NavLink}

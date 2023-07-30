@@ -13,7 +13,7 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background-image: url(../../assets/instalacionesPerros.jpeg);
+  background-image: url(../../assets/fondo7.jpg);
   background-size: cover;
   background-repeat: no-repeat;
   opacity: 0.4;
@@ -27,15 +27,16 @@ body {
 .textoBienvenida {
   display: inline-block;
   animation: caidaDesdeArriba 2s;
+  background-color: rgba(255, 255, 255, 0.316);
   border-radius: 5%;
-  background-color: rgba(31, 31, 31, 0.113);
-  color: white;
+  color: black;
   margin-top: 5em;
+  z-index: 80;
 }
 
 .reservar-cita-container {
-  margin-top: -25em;
-  margin-left: 50em;
+  margin-top: 9em;
+  margin-left: 85em;
   background-color: #f4b400;
   padding: 8px 20px;
   border-radius: 20px;
@@ -178,6 +179,26 @@ body {
 
 .card:hover::before {
   transform: translateX(0);
+}
+
+.carousel {
+  max-width: 1000px;
+  margin: 0 auto;
+  bottom: 22em;
+}
+
+.carousel .slide img {
+  max-height: 500px;
+}
+
+.carousel .legend {
+  background: rgba(0, 0, 0, 0.3);
+  color: white;
+  padding: 10px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 
 @media screen and (max-width: 768px) {

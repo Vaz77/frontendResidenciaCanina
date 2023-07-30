@@ -8,6 +8,12 @@ import { NavLink } from "react-router-dom";
 import AlimentPage from "../AlimentPage/AlimentPage";
 import perroImage from "../../assets/fondoMel.png";
 import { useSelector } from "react-redux";
+import { Carousel } from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import image1 from "../../assets/perrosFelices.jpg";
+import image2 from "../../assets/instalacionesPerros3.jpg";
+import image4 from "../../assets/excursionCanina.jpg";
+import image3 from "../../assets/perrosPIscina.jpeg";
 
 const HomePage = () => {
   const [showImage, setShowImage] = useState(false);
@@ -78,6 +84,27 @@ const HomePage = () => {
               ? `¡Bienvenid@ ${userName} a tu Guarderia Canina cerca de la ciudad!`
               : "¡Bienvenid@ a tu Guarderia Canina cerca de la ciudad!"}
           </h1>
+          <Carousel showThumbs={false} infiniteLoop autoPlay>
+            <div>
+              <img src={image1} alt="Imagen 1" />
+              <p className="legend">Leyenda de la imagen 1</p>
+            </div>
+            <div>
+              <img src={image2} alt="Imagen 2" />
+              <p className="legend">Leyenda de la imagen 2</p>
+            </div>
+            <div>
+              <img src={image3} alt="Imagen 3" />
+              <p className="legend">Leyenda de la imagen 3</p>
+            </div>
+            <div>
+              <img src={image4} alt="Imagen 4" />
+              <p className="legend">Leyenda de la imagen 4</p>
+            </div>
+
+            {/* Agrega más imágenes aquí */}
+          </Carousel>
+
           {showCards && (
             <div className="card-container">
               <NavLink
