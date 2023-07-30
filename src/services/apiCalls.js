@@ -162,3 +162,16 @@ export const updateUser = async (userData) => {
     throw error;
   }
 };
+
+export const registerDog = async (dogData) => {
+  try {
+    const response = await axios.post(
+      `http://localhost:3000/dog/register`,
+      dogData,
+    );
+    return response.data;
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+};
