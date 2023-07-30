@@ -30,14 +30,13 @@ body {
   background-color: rgba(255, 255, 255, 0.316);
   border-radius: 5%;
   color: black;
-  margin-top: 5em;
-  z-index: 80;
+  margin-top: -10em;
 }
 
 .reservar-cita-container {
-  margin-top: 9em;
+  margin-top: -1em;
   margin-left: 85em;
-  background-color: #f4b400;
+  background-color: #c0b59f;
   padding: 8px 20px;
   border-radius: 20px;
   text-align: center;
@@ -71,16 +70,16 @@ body {
 
 .reservar-cita-texto {
   font-size: 16px;
-  color: #ff0000;
+  color: #f3f4ee;
   text-decoration: none;
 }
 
 .reservar-cita-rope {
-  margin-top: -19em;
+  margin-top: -27.8em;
   margin-left: 3.5em;
   transform: translateX(-50%);
   width: 2px;
-  height: 200px;
+  height: 350px;
   background-color: #8c6239;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 }
@@ -133,16 +132,16 @@ body {
 .card {
   width: 140px;
   height: 20px;
-  background-color: #aaaaaa;
+  background-color: #bbcfc0;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgb(255, 255, 255);
   padding: 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.5rem;
+  font-size: 1.1rem;
   color: rgb(0, 0, 0);
-  margin-bottom: -9em;
+  margin-bottom: 1em;
   margin-left: 1em;
   transition: 0.3s;
   position: relative;
@@ -151,6 +150,7 @@ body {
   text-decoration: none;
 }
 
+
 .card::before {
   content: "";
   position: absolute;
@@ -158,7 +158,7 @@ body {
   right: 0;
   width: 100%;
   height: 100%;
-  background-color: #e7e7e731;
+  background-color: #f0f0f00d;
   border-radius: 30%;
   display: flex;
   align-items: center;
@@ -184,7 +184,6 @@ body {
 .carousel {
   max-width: 1000px;
   margin: 0 auto;
-  bottom: 22em;
 }
 
 .carousel .slide img {
@@ -192,7 +191,7 @@ body {
 }
 
 .carousel .legend {
-  background: rgba(0, 0, 0, 0.3);
+  background: #bbcfc0;
   color: white;
   padding: 10px;
   position: absolute;
@@ -210,7 +209,7 @@ body {
   .reservar-cita-container {
     width: 50px;
     height: 120px;
-    margin-top: -10em;
+    margin-top: 1em;
     margin-left: -15em;
   }
 
@@ -247,5 +246,14 @@ body {
     height: 100px;
     margin: 0 0 1rem 0;
     font-size: 1.5rem;
+  }
+  .carousel {
+    max-width: 100%; /* Full width on small screens */
+    overflow: hidden;
+    bottom: 6em; /* Adjust the position of the carousel on small screens */
+  }
+
+  .carousel .slide img {
+    max-height: 300px; /* Reduce the height of images on small screens */
   }
 }

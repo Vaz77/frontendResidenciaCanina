@@ -154,7 +154,7 @@
   .nav-links {
     flex-direction: row;
     justify-content: space-around;
-    font-size: 1.1rem;
+    font-size: 0.8rem;
   }
   .footer {
     max-height: 26%;
@@ -162,5 +162,9 @@
 
   .derechos {
     display: none;
+  }
+
+  .footer-container {
+    font-size: 0.5em;
   }
 }

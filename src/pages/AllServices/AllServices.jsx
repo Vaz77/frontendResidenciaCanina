@@ -83,8 +83,8 @@ const AllServices = () => {
                     })
                   }
                 />
-                <button onClick={handleUpdateService}>Guardar</button>
-                <button onClick={() => setEditingService(null)}>
+                <button className="botonServices2" onClick={handleUpdateService}>Guardar</button>
+                <button className="botonServices2" onClick={() => setEditingService(null)}>
                   Cancelar
                 </button>
               </div>
@@ -93,7 +93,7 @@ const AllServices = () => {
                 <p>Nombre del servicio: {service.name}</p>
                 <p>Descripción: {service.description}</p>
                 <p>Precio: {service.price}</p>
-                <button onClick={() => handleEditService(service.id)}>
+                <button className="botonServices" onClick={() => handleEditService(service.id)}>
                   Editar
                 </button>
               </div>

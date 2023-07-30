@@ -121,8 +121,8 @@ const AllUsers = () => {
                     })
                   }
                 />
-                <button onClick={handleUpdateUser}>Guardar</button>
-                <button onClick={() => setEditingUser(null)}>Cancelar</button>
+                <button className="botonUser2" onClick={handleUpdateUser}>Guardar</button>
+                <button className="botonUser2" onClick={() => setEditingUser(null)}>Cancelar</button>
               </div>
             ) : (
               <div>
@@ -131,7 +131,7 @@ const AllUsers = () => {
                 <p>Email: {user.email}</p>
                 <p>Phone: {user.phone}</p>
                 <p>Dni: {user.dni}</p>
-                <button onClick={() => handleEditUser(user.id)}>Editar</button>
+                <button className="botonUser" onClick={() => handleEditUser(user.id)}>Editar</button>
               </div>
             )}
           </div>

@@ -34,15 +34,15 @@ const ServicesPage = () => {
       icon: icono4,
     },
     {
-      title: "Baños y Cuidados",
+      title: "Transporte",
       description:
-        "Mantén a tu perro limpio y fresco con nuestros servicios de baño y cuidado. Utilizamos productos de alta calidad y técnicas de aseo suaves para asegurarnos de que tu perro se sienta relajado y mimado.",
+        "En Guardería Canina, nos preocupamos por el bienestar de tu perro, por eso ofrecemos un transporte adaptado y seguro, garantizando comodidad durante sus traslados.",
       icon: icono5,
     },
     {
-      title: "Baños y Cuidados",
+      title: "Veterinario 24h",
       description:
-        "Mantén a tu perro limpio y fresco con nuestros servicios de baño y cuidado. Utilizamos productos de alta calidad y técnicas de aseo suaves para asegurarnos de que tu perro se sienta relajado y mimado.",
+        "Contamos con un equipo de veterinarios disponibles las 24 horas que colaboran con nosotros, brindando atención médica integral y urgente para asegurar la salud y cuidado de tu mascota en todo momento.",
       icon: icono6,
     },
   ];

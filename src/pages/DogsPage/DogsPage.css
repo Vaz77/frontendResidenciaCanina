@@ -11,13 +11,39 @@
 }
 
 .dogs-container {
-  max-width: 800px;
+  width: 100%;
   margin: 0 auto;
   padding: 20px;
   background-color: #fff;
   border-radius: 8px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
+
+.dog-form input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.dog-form button {
+  width: 100%;
+  background-color: #c1b59f;
+  border: none;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.dog-form button:hover {
+  background-color: #c1b59f;
+}
+
 
 .dog-form {
   display: flex;

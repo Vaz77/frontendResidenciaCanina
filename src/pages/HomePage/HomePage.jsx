@@ -81,30 +81,27 @@ const HomePage = () => {
           </div>
           <h1 className="textoBienvenida">
             {userName
-              ? `¡Bienvenid@ ${userName} a tu Guarderia Canina cerca de la ciudad!`
-              : "¡Bienvenid@ a tu Guarderia Canina cerca de la ciudad!"}
+              ? `¡Bienvenid@ ${userName} a tu Hotel canino cerca de la ciudad!`
+              : "¡Bienvenid@ a tu Hotel canino cerca de la ciudad!"}
           </h1>
           <Carousel showThumbs={false} infiniteLoop autoPlay>
             <div>
               <img src={image1} alt="Imagen 1" />
-              <p className="legend">Leyenda de la imagen 1</p>
+              <p className="legend">¡Una imagen vale mas que mil palabras!</p>
             </div>
             <div>
               <img src={image2} alt="Imagen 2" />
-              <p className="legend">Leyenda de la imagen 2</p>
+              <p className="legend">Amplias instalaciones</p>
             </div>
             <div>
               <img src={image3} alt="Imagen 3" />
-              <p className="legend">Leyenda de la imagen 3</p>
+              <p className="legend">¡Pisicnas adaptadas para ellos, y supervisadas!</p>
             </div>
             <div>
               <img src={image4} alt="Imagen 4" />
-              <p className="legend">Leyenda de la imagen 4</p>
+              <p className="legend">¡Organizamos excursiones con vosotros!</p>
             </div>
-
-            {/* Agrega más imágenes aquí */}
           </Carousel>
-
           {showCards && (
             <div className="card-container">
               <NavLink

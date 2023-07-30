@@ -38,12 +38,15 @@ const LoginForm = ({ isOpen, onRequestClose, onRegisterModalOpen }) => {
             roleId: decodedToken.roleId
           })
         );
+        onRequestClose();
         navigate("/");
       })
       .catch((error) => {
         console.log("Error durante el inicio de sesión:", error.message);
       });
   };
+
+  
   return (
     <Modal
       isOpen={isOpen}

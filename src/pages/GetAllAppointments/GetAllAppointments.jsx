@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import './GetAllAppointments.css'
+import Footer from "../../common/Footer/Footer";
 import {
   fetchAllAppointments,
   deleteAppointment,
@@ -85,6 +86,7 @@ function GetAllAppointments() {
           <button onClick={handleCloseModal}>Cancelar</button>
         </div>
       )}
+      <Footer />
     </div>
   );
 }

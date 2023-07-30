@@ -4,8 +4,8 @@
   align-items: center;
   min-height: 100vh;
   background-color: #bbcfc0;
-  padding: 30px;
   font-family: Arial, sans-serif;
+  width: 100%;
 }
 
 .aliment {
