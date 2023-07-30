@@ -55,8 +55,8 @@ const DogsPage = () => {
           />
           <input
             type="text"
-            name="weight"
-            value={dogData.weight}
+            name="wheight"
+            value={dogData.wheight}
             placeholder="Peso del perro"
             onChange={handleChange}
           />

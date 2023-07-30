@@ -65,7 +65,7 @@ export const fetchAllAppointments = async (token) => {
   }
 };
 
-export const fetchAllUsers = async (token) => {
+export const fetchAllUsers = async () => {
   try {
     const response = await axios.get("http://localhost:3000/user/getAllUsers", {
       headers: {
@@ -152,7 +152,7 @@ export const updateUser = async (userData) => {
       userData,
       {
         headers: {
-          Authorization: ``,
+          Authorization: "",
         },
       }
     );
@@ -172,6 +172,24 @@ export const registerDog = async (dogData) => {
     return response.data;
   } catch (error) {
     console.error(error);
+    throw error;
+  }
+};
+
+export const updateDog = async (dogData) => {
+  try {
+    const response = await axios.put(
+      `http://localhost:3000/dog/profile/${dogData.id}`,
+      dogData,
+      {
+        headers: {
+          Authorization: "",
+        },
+      }
+    );
+    return response.data;
+  } catch (error) {
+    console.error("Error al modificar el perro:", error);
     throw error;
   }
 };

@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
+import { fetchAllDogs, updateDog } from "../../services/apiCalls";
 import "./AllDogs.css";
-import { fetchAllDogs } from "../../services/apiCalls";
 
 const AllDogs = () => {
   const [dogs, setDogs] = useState([]);
+  const [editingDog, setEditingDog] = useState(null);
 
   useEffect(() => {
     getAllDogs();
@@ -11,11 +12,31 @@ const AllDogs = () => {
 
   const getAllDogs = async () => {
     try {
-      const token = "...";
-      const dogsData = await fetchAllDogs(token);
+      const dogsData = await fetchAllDogs();
       setDogs(dogsData.data);
     } catch (error) {
-      console.error("Error al obtener los perros:", error);
+      console.error("Error al obtener los servicios:", error);
+    }
+  };
+
+  const handleEditDog = (dogId) => {
+    const dogToEdit = dogs.find((dog) => dog.id === dogId);
+    setEditingDog(dogToEdit);
+  };
+
+  const handleUpdateDog = async () => {
+    try {
+      if (editingDog && editingDog.id) {
+        await updateDog(editingDog);
+        setEditingDog(null);
+        getAllDogs();
+      } else {
+        console.error(
+          "El perro que se está editando no tiene un ID válido."
+        );
+      }
+    } catch (error) {
+      console.error("Error al actualizar el perro:", error);
     }
   };
 
@@ -29,13 +50,64 @@ const AllDogs = () => {
       <div className="dogs-list">
         {dogs.map((dog) => (
           <div key={dog.id} className="dog-card">
-            <div className="dog-photo"></div>
-            <p>Nombre: {dog.name}</p>
-            <p>Raza: {dog.breed}</p>
-            <p>Edad: {dog.age}</p>
-            <p>Peso: {dog.wheight}</p>
-            <p>Patologias: {dog.pathologies}</p>
-            <p>User id: {dog.user_id}</p>
+            {editingDog && editingDog.id === dog.id ? (
+              <div>
+                <input
+                  type="text"
+                  value={editingDog.name}
+                  onChange={(e) =>
+                    setEditingDog({
+                      ...editingDog,
+                      name: e.target.value,
+                    })
+                  }
+                />
+                                <input
+                  type="text"
+                  value={editingDog.age}
+                  onChange={(e) =>
+                    setEditingDog({
+                      ...editingDog,
+                      age: e.target.value,
+                    })
+                  }
+                />
+                <input
+                  type="text"
+                  value={editingDog.wheight}
+                  onChange={(e) =>
+                    setEditingDog({
+                      ...editingDog,
+                      wheight: e.target.value,
+                    })
+                  }
+                />
+                <input
+                  type="text"
+                  value={editingDog.pathologies}
+                  onChange={(e) =>
+                    setEditingDog({
+                      ...editingDog,
+                      pathologies: e.target.value,
+                    })
+                  }
+                />
+                <button onClick={handleUpdateDog}>Guardar</button>
+                <button onClick={() => setEditingDog(null)}>
+                  Cancelar
+                </button>
+              </div>
+            ) : (
+              <div>
+                <p>Nombre del perro: {dog.name}</p>
+                <p>Edad: {dog.age}</p>
+                <p>Peso: {dog.wheight}</p>
+                <p>Patologías: {dog.pathologies}</p>
+                <button onClick={() => handleEditDog(dog.id)}>
+                  Editar
+                </button>
+              </div>
+            )}
           </div>
         ))}
       </div>
