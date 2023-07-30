@@ -119,6 +119,9 @@ const Footer = () => {
         <NavLink className="inicio" onClick={handleAppointmentsClick}>
           <h5>Reservas</h5>
         </NavLink>
+        <NavLink as={NavLink} to="/userAppointment" exact="true">
+          <h5>Mis citas</h5>
+        </NavLink>
         {token ? (
           <NavLink
             as={NavLink}
@@ -137,7 +140,9 @@ const Footer = () => {
       </div>
       <div className="footer-container">
         <div className="footer-content footer-info">
-          <p className="textPhone">Teléfono: 692157845 | Email: info@guarderiacanina.com</p>
+          <p className="textPhone">
+            Teléfono: 692157845 | Email: info@guarderiacanina.com
+          </p>
         </div>
         <div className="footer-content footer-social">
           <div className="footer-social-icons">

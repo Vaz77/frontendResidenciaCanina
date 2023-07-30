@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { fetchAllServices, updateServices } from "../../services/apiCalls";
 import "./AllServices.css";
+import Footer from "../../common/Footer/Footer";
 
 const AllServices = () => {
   const [services, setServices] = useState([]);
@@ -100,6 +101,7 @@ const AllServices = () => {
           </div>
         ))}
       </div>
+      <Footer />
     </div>
   );
 };

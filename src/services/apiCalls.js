@@ -167,7 +167,7 @@ export const registerDog = async (dogData) => {
   try {
     const response = await axios.post(
       `http://localhost:3000/dog/register`,
-      dogData,
+      dogData
     );
     return response.data;
   } catch (error) {
@@ -190,6 +190,18 @@ export const updateDog = async (dogData) => {
     return response.data;
   } catch (error) {
     console.error("Error al modificar el perro:", error);
+    throw error;
+  }
+};
+
+export const fetchAppointmentsByDogId = async (dogId) => {
+  try {
+    const response = await axios.get(
+      `http://localhost:3000/appointment/appointment/dog/${dogId}`
+    );
+    return response.data;
+  } catch (error) {
+    console.error("Error al obtener las citas:", error);
     throw error;
   }
 };

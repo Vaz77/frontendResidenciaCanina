@@ -7,6 +7,7 @@ import AllUsers from "./pages/AllUsers/AllUsers";
 import AllDogs from "./pages/AllDogs/AllDogs";
 import AllServices from "./pages/AllServices/AllServices";
 import DogsPage from "./pages/DogsPage/DogsPage";
+import UserAppointment from "./pages/UserAppointment/UserAppointment";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -19,7 +20,7 @@ function App() {
         <Route path="/allDogs" element={<AllDogs />} />
         <Route path="/allServices" element={<AllServices />} />
         <Route path="/dogsPage" element={<DogsPage />} />
-        
+        <Route path="/userAppointment" element={<UserAppointment />} />
       </Routes>
     </>
   );

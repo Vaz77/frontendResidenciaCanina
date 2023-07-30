@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { fetchAllDogs, updateDog } from "../../services/apiCalls";
 import "./AllDogs.css";
+import Footer from "../../common/Footer/Footer";
 
 const AllDogs = () => {
   const [dogs, setDogs] = useState([]);
@@ -31,9 +32,7 @@ const AllDogs = () => {
         setEditingDog(null);
         getAllDogs();
       } else {
-        console.error(
-          "El perro que se está editando no tiene un ID válido."
-        );
+        console.error("El perro que se está editando no tiene un ID válido.");
       }
     } catch (error) {
       console.error("Error al actualizar el perro:", error);
@@ -62,7 +61,7 @@ const AllDogs = () => {
                     })
                   }
                 />
-                                <input
+                <input
                   type="text"
                   value={editingDog.age}
                   onChange={(e) =>
@@ -93,9 +92,7 @@ const AllDogs = () => {
                   }
                 />
                 <button onClick={handleUpdateDog}>Guardar</button>
-                <button onClick={() => setEditingDog(null)}>
-                  Cancelar
-                </button>
+                <button onClick={() => setEditingDog(null)}>Cancelar</button>
               </div>
             ) : (
               <div>
@@ -103,14 +100,13 @@ const AllDogs = () => {
                 <p>Edad: {dog.age}</p>
                 <p>Peso: {dog.wheight}</p>
                 <p>Patologías: {dog.pathologies}</p>
-                <button onClick={() => handleEditDog(dog.id)}>
-                  Editar
-                </button>
+                <button onClick={() => handleEditDog(dog.id)}>Editar</button>
               </div>
             )}
           </div>
         ))}
       </div>
+      <Footer />
     </div>
   );
 };
