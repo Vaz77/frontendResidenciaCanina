@@ -46,20 +46,36 @@ const ServicesPage = () => {
       icon: icono6,
     },
   ];
+  const handleScrollToAppointments = () => {
+    const appointmentsPageSection = document.getElementById("appointmentsPage");
+    if (appointmentsPageSection) {
+      appointmentsPageSection.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+        inline: "nearest",
+      });
+    }
+  };
   return (
     <div className="services-page">
       <h1>Nuestros Servicios</h1>
       <div className="service-section-container">
         {services.map((service, index) => (
-          <div key={index} className={`service-section ${service.className}`}>
+          <div
+            key={index}
+            id={`service-${index + 1}`}
+            className={`service-section ${service.className}`}
+          >
             <img
               src={service.icon}
               alt={service.title}
               className="service-icon"
+              to=""
             />
             <div className="service-details">
               <h2>{service.title}</h2>
               <p>{service.description}</p>
+              <button onClick={handleScrollToAppointments}>Reserva aquí</button>
             </div>
           </div>
         ))}

@@ -110,11 +110,12 @@ body {
 
 .perro-image-container {
   position: fixed;
-  bottom: 11.4em;
+  bottom: 7.69em;
   left: 50%;
   transform: translateX(-50%);
   z-index: 1;
   margin-left: -50em;
+  max-width: 400px;
 }
 
 .perro-image {
@@ -129,16 +130,16 @@ body {
 }
 
 .card {
-  width: 200px;
-  height: 150px;
+  width: 140px;
+  height: 20px;
   background-color: #aaaaaa;
-  border-radius: 20px;
+  border-radius: 10px;
   box-shadow: 0 4px 8px rgb(255, 255, 255);
   padding: 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   color: rgb(0, 0, 0);
   margin-bottom: -9em;
   margin-left: 1em;
@@ -172,6 +173,7 @@ body {
   transform: translateY(-8px);
   box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
   background-color: #aaaaaa;
+  color: white;
 }
 
 .card:hover::before {

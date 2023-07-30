@@ -94,12 +94,13 @@ textarea {
   color: rgb(88, 0, 164);
   transition: 0.3s;
   cursor: alias;
+  margin-left: -1em;
 }
 .textoTittleForm:hover {
   transform: scale(1.4);
 }
 .textoPlaza {
-  margin-left: 1em;
+  margin-left: 0.2em;
   transition: 0.3s;
   cursor: alias;
 }
@@ -111,6 +112,7 @@ textarea {
 .textoForm {
   transition: 0.3s;
   cursor: alias;
+  margin-left: -0.9em;
 }
 
 .textoForm:hover {
@@ -150,6 +152,7 @@ textarea {
   position: relative;
   overflow: hidden;
   margin-top: 0.5em;
+  margin-left: 1.7em;
 }
 
 .custom-button:before {

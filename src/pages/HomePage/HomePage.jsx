@@ -112,6 +112,14 @@ const HomePage = () => {
               >
                 <h5>Todos los servicios</h5>
               </NavLink>
+              <NavLink
+                as={NavLink}
+                to="/dogsPage"
+                exact="true"
+                className="inicio card"
+              >
+                <h5>Registro de perros</h5>
+              </NavLink>
             </div>
           )}
           <div className="perro-image-container">

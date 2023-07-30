@@ -12,21 +12,31 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 900px;
+  max-width: 1900px;
   background-color: rgb(46, 46, 46);
-  margin-left: 30em;
+  max-height: 80px;
+  
+  
+}
+
+.textPhone{
+  margin: 1em;
 }
 
 .footer-content {
   display: flex;
   flex-direction: row;
   text-align: center;
-  justify-content: center;
+  justify-content: space-between;
 }
 
 .footer-content h3 {
   padding: 0;
   margin: 0;
+}
+
+.footerDerechos{
+  margin: 1em;
 }
 
 .footer-links {

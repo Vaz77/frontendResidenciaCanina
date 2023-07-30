@@ -95,7 +95,6 @@ const Footer = () => {
       });
     }
   };
-
   return (
     <footer className="footer">
       <div className="nav-links">
@@ -138,8 +137,7 @@ const Footer = () => {
       </div>
       <div className="footer-container">
         <div className="footer-content footer-info">
-          <p>Teléfono: 692157845</p>
-          <p className="textoEmailFooter">Email: info@guarderiacanina.com</p>
+          <p className="textPhone">Teléfono: 692157845 | Email: info@guarderiacanina.com</p>
         </div>
         <div className="footer-content footer-social">
           <div className="footer-social-icons">
@@ -166,7 +164,7 @@ const Footer = () => {
             </a>
           </div>
         </div>
-        <p className="footer-content footer-rights">
+        <p className="footerDerechos footer-rights">
           &copy; {new Date().getFullYear()} Guarderia Canina. Todos los derechos
           reservados.
         </p>

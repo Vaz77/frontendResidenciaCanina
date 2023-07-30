@@ -1,46 +1,102 @@
 .get-all-appointments-container {
-  background-color: darkgreen;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
+  background-color: #d7d7d7;
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  padding: 20px;
+}
+
+.misCitas {
+  color: #007bff;
+  font-size: 32px;
+  margin-bottom: 20px;
 }
 
 .appointmentsList {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  max-width: 900px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  max-width: 1000px;
+  margin-top: 20px;
 }
 
 .appointmentCard {
   background-color: #fff;
-  border-radius: 8px;
+  border-radius: 12px;
   padding: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin-bottom: 20px;
-  flex-basis: calc(33.33% - 20px);
   box-sizing: border-box;
   min-height: 200px;
 }
 
-.appointmentCard hr {
-  margin-top: 10px;
-  margin-bottom: 0;
+.appointmentCard h4 {
+  color: #007bff;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
 }
 
-.misCitas {
+.appointmentCard p {
+  margin: 5px 0;
+  font-size: 16px;
+}
+
+.appointmentCard button {
+  background-color: #dc3545;
   color: #fff;
-  font-size: 24px;
-  margin-bottom: 20px;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+.appointmentCard button:hover {
+  background-color: #c82333;
 }
 
 .loadingAppointments {
-  color: #fff;
+  color: #007bff;
   font-size: 18px;
   margin-top: 20px;
+}
+
+.modal {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+}
+
+.modal h3 {
+  color: #007bff;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.modal button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+.modal button:last-child {
+  background-color: #dc3545;
+}
+
+.modal button:hover {
+  background-color: #0056b3;
 }

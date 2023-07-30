@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import './GetAllAppointments.css'
 import {
   fetchAllAppointments,
   deleteAppointment,

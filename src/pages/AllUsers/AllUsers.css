@@ -8,6 +8,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  
 
   .textUsers {
     color: black;
@@ -31,14 +32,14 @@
   }
 
   .user-card {
-    background-color: #fff;
+    background-color: #d9c1c1;
     border-radius: 8px;
     padding: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    flex-basis: calc(50% - 10px);
+    flex-basis: calc(33.33% - 20px);
     box-sizing: border-box;
     min-height: 200px;
-    margin: 0.3em;
+    margin: 10px;
   }
 
   .user-photo {
