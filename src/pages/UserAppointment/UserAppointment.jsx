@@ -26,13 +26,13 @@ const UserAppointment = () => {
 
   return (
     <div className="user-appointment-container">
-      <h1>Buscar Citas por ID de Perro</h1>
+      <h1>Buscar cita de su perro</h1>
       <div className="search-container">
         <input
           type="text"
           value={dogId}
           onChange={(e) => setDogId(e.target.value)}
-          placeholder="Introduce el ID del perro"
+          placeholder="Nº afiliado del perro"
         />
         <button onClick={handleSearch}>Buscar Citas</button>
       </div>
@@ -52,7 +52,7 @@ const UserAppointment = () => {
                     <p>Hora: {appointmentDog.time}</p>
                     <p>Observaciones: {appointmentDog.observations}</p>
                     <p>Duración: {appointmentDog.duration}</p>
-                    <p>Servicio: {appointmentDog.service_id}</p>
+                    <p>Servicio: {appointmentDog.service_name}</p>
                   </div>
                 </li>
               ))}
