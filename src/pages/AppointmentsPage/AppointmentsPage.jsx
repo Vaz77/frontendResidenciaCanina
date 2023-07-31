@@ -17,6 +17,7 @@ const AppointmentsPage = () => {
   const { credentials } = useSelector(userData);
   const [serviceInputValue, setServiceInputValue] = useState("");
   const [suggestedServices, setSuggestedServices] = useState([]);
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -74,6 +75,7 @@ const AppointmentsPage = () => {
       setDog_name("");
       setService_id("");
       setService_name("");
+      setErrorMessage('No puedes reservar citas, registrate!');
     } catch (error) {
       console.error("Error al crear la cita:", error);
     }
@@ -197,7 +199,7 @@ const AppointmentsPage = () => {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="dog_id">ID del perro:</label>
+            <label htmlFor="dog_id">Nº de afiliado del perro:</label>
             <input
               type="number"
               id="dog_id"
@@ -222,6 +224,7 @@ const AppointmentsPage = () => {
           </button>
         </form>
       </section>
+      {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
     </div>
   );
 };

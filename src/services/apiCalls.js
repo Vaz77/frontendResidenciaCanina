@@ -38,9 +38,9 @@ export const createAppointment = async (token, appointmentData) => {
       appointmentData,
       {
         headers: {
-          Authorization: ``,
+            Authorization: `Bearer ${token}`,
         },
-      }
+        }
     );
     return response.data;
   } catch (error) {
