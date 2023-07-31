@@ -162,17 +162,6 @@ const AppointmentsPage = () => {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="service_id">ID del servicio:</label>
-            <input
-              type="number"
-              id="service_id"
-              name="service_id"
-              required
-              value={service_id}
-              onChange={handleInputChange}
-            />
-          </div>
-          <div className="form-group">
             <label htmlFor="service_name">Nombre del servicio:</label>
             <input
               type="text"
