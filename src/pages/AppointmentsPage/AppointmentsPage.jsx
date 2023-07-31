@@ -2,72 +2,104 @@ import React, { useState } from "react";
 import "./AppointmentsPage.css";
 import icon1 from "../../assets/flechaHaciaAbajo.png";
 import { createAppointment } from "../../services/apiCalls";
-import { useSelector } from 'react-redux';
-import { userData } from '../userSlice';
+import { useSelector } from "react-redux";
+import { userData } from "../userSlice";
 
 const AppointmentsPage = () => {
-  const [time, setTime] = useState('');
-  const [date, setDate] = useState('');
-  const [observations, setObservations] = useState('');
-  const [dog_name, setDog_name] = useState('');
-  const [dog_id, setDog_id] = useState('');
-  const [service_id, setService_id] = useState('');
-  const [duration, setDuration] = useState('');
+  const [time, setTime] = useState("");
+  const [date, setDate] = useState("");
+  const [observations, setObservations] = useState("");
+  const [dog_name, setDog_name] = useState("");
+  const [dog_id, setDog_id] = useState("");
+  const [service_id, setService_id] = useState("");
+  const [service_name, setService_name] = useState("");
+  const [duration, setDuration] = useState("");
   const { credentials } = useSelector(userData);
-  
+  const [serviceInputValue, setServiceInputValue] = useState("");
+  const [suggestedServices, setSuggestedServices] = useState([]);
 
   const handleInputChange = (e) => {
-  const { name, value } = e.target;
-  switch (name) {
-      case 'time':
-      setTime(value);
-      break;
-      case 'date':
-      setDate(value);
-      break;
-      case 'observations':
-      setObservations(value);
-      break;
-      case 'dog_id':
-      setDog_id(value);
-      break;
-      case 'dog_name':
+    const { name, value } = e.target;
+    switch (name) {
+      case "time":
+        setTime(value);
+        break;
+      case "date":
+        setDate(value);
+        break;
+      case "observations":
+        setObservations(value);
+        break;
+      case "dog_id":
+        setDog_id(value);
+        break;
+      case "dog_name":
         setDog_name(value);
         break;
-      case 'service_id':
-      setService_id(value);
-      break;
-      case 'duration':
+      case "service_id":
+        setService_id(value);
+        break;
+      case "service_name":
+        setService_name(value);
+        break;
+      case "duration":
         setDuration(value);
         break;
       default:
-      break;
-  }
+        break;
+    }
   };
   const handleSubmit = async (e) => {
-      e.preventDefault();
-      try {
-          const appointmentData = {
-            date,
-            time,
-            observations,
-            dog_id,
-            dog_name,
-            duration,
-            service_id,
-          };
-          const response = await createAppointment(credentials.token, appointmentData);
-          setDuration('');
-          setTime('');
-          setDate('');
-          setObservations('');
-          setDog_id('');
-          setDog_name('');
-          setService_id('');
-        } catch (error) {
-        console.error('Error al crear la cita:', error);
-    } 
-  }
+    e.preventDefault();
+    try {
+      const appointmentData = {
+        date,
+        time,
+        observations,
+        dog_id,
+        dog_name,
+        duration,
+        service_id,
+        service_name,
+      };
+      const response = await createAppointment(
+        credentials.token,
+        appointmentData
+      );
+      setDuration("");
+      setTime("");
+      setDate("");
+      setObservations("");
+      setDog_id("");
+      setDog_name("");
+      setService_id("");
+      setService_name("");
+    } catch (error) {
+      console.error("Error al crear la cita:", error);
+    }
+  };
+  const availableServices = [
+    "Residencia",
+    "Guardería",
+    "Transporte",
+    "Entrenamientos/paseos",
+    "Veterinario",
+    "Baños e higiene",
+  ];
+  const handleServiceInputChange = (event) => {
+    const inputValue = event.target.value;
+    setServiceInputValue(inputValue);
+    const filteredServices = availableServices.filter((service) =>
+      service.toLowerCase().includes(inputValue.toLowerCase())
+    );
+
+    setSuggestedServices(filteredServices);
+  };
+
+  const handleServiceOptionClick = (service) => {
+    setServiceInputValue(service);
+    setSuggestedServices([]);
+  };
 
   return (
     <div className="appointments-page">
@@ -96,7 +128,7 @@ const AppointmentsPage = () => {
           Rellena los datos y un profesional se pondrá en contacto contigo
         </h2>
         <form onSubmit={handleSubmit}>
-        <div className="form-group">
+          <div className="form-group">
             <label htmlFor="date">Fecha de la cita:</label>
             <input
               type="text"
@@ -141,6 +173,30 @@ const AppointmentsPage = () => {
             />
           </div>
           <div className="form-group">
+            <label htmlFor="service_name">Nombre del servicio:</label>
+            <input
+              type="text"
+              id="service_name"
+              name="service_name"
+              required
+              value={serviceInputValue}
+              onChange={handleServiceInputChange}
+            />
+            {suggestedServices.length > 0 && (
+              <ul className="suggested-services-list">
+                {suggestedServices.map((service) => (
+                  <ul
+                    key={service}
+                    className="suggested-service-item"
+                    onClick={() => handleServiceOptionClick(service)}
+                  >
+                    {service}
+                  </ul>
+                ))}
+              </ul>
+            )}
+          </div>
+          <div className="form-group">
             <label htmlFor="duration">Duración:</label>
             <input
               type="text"
@@ -172,9 +228,9 @@ const AppointmentsPage = () => {
               onChange={handleInputChange}
             ></textarea>
           </div>
-            <button className="custom-button" type="submit">
-              Reservar cita
-            </button>
+          <button className="custom-button" type="submit">
+            Reservar cita
+          </button>
         </form>
       </section>
     </div>

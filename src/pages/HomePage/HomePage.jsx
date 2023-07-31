@@ -99,7 +99,9 @@ const HomePage = () => {
             </div>
             <div>
               <img src={image3} alt="Imagen 3" />
-              <p className="legend">¡Pisicnas adaptadas para ellos, y supervisadas!</p>
+              <p className="legend">
+                ¡Pisicnas adaptadas para ellos, y supervisadas!
+              </p>
             </div>
             <div>
               <img src={image4} alt="Imagen 4" />
