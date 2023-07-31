@@ -2,10 +2,13 @@ import React, { useEffect, useState } from "react";
 import { fetchAllServices, updateServices } from "../../services/apiCalls";
 import "./AllServices.css";
 import Footer from "../../common/Footer/Footer";
+import { userData } from "../userSlice";
+import { useSelector } from "react-redux";
 
 const AllServices = () => {
   const [services, setServices] = useState([]);
   const [editingService, setEditingService] = useState(null);
+  const { credentials } = useSelector(userData);
 
   useEffect(() => {
     getAllServices();
@@ -13,7 +16,7 @@ const AllServices = () => {
 
   const getAllServices = async () => {
     try {
-      const servicesData = await fetchAllServices();
+      const servicesData = await fetchAllServices(credentials.token);
       setServices(servicesData.data);
     } catch (error) {
       console.error("Error al obtener los servicios:", error);

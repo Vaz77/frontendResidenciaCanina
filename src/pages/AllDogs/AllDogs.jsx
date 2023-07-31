@@ -2,18 +2,21 @@ import React, { useEffect, useState } from "react";
 import { fetchAllDogs, updateDog } from "../../services/apiCalls";
 import "./AllDogs.css";
 import Footer from "../../common/Footer/Footer";
+import { useSelector } from "react-redux";
+import { userData } from "../userSlice";
 
 const AllDogs = () => {
+  const { credentials } = useSelector(userData);
   const [dogs, setDogs] = useState([]);
   const [editingDog, setEditingDog] = useState(null);
 
   useEffect(() => {
     getAllDogs();
-  }, []);
+  }, [credentials.token]);
 
   const getAllDogs = async () => {
     try {
-      const dogsData = await fetchAllDogs();
+      const dogsData = await fetchAllDogs(credentials.token);
       setDogs(dogsData.data);
     } catch (error) {
       console.error("Error al obtener los servicios:", error);
@@ -91,8 +94,15 @@ const AllDogs = () => {
                     })
                   }
                 />
-                <button className="butonDogs2" onClick={handleUpdateDog}>Guardar</button>
-                <button className="butonDogs2" onClick={() => setEditingDog(null)}>Cancelar</button>
+                <button className="butonDogs2" onClick={handleUpdateDog}>
+                  Guardar
+                </button>
+                <button
+                  className="butonDogs2"
+                  onClick={() => setEditingDog(null)}
+                >
+                  Cancelar
+                </button>
               </div>
             ) : (
               <div>
@@ -100,7 +110,12 @@ const AllDogs = () => {
                 <p>Edad: {dog.age}</p>
                 <p>Peso: {dog.wheight}</p>
                 <p>Patologías: {dog.pathologies}</p>
-                <button className="butonDogs" onClick={() => handleEditDog(dog.id)}>Editar</button>
+                <button
+                  className="butonDogs"
+                  onClick={() => handleEditDog(dog.id)}
+                >
+                  Editar
+                </button>
               </div>
             )}
           </div>

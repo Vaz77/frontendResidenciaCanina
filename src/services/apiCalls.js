@@ -38,9 +38,9 @@ export const createAppointment = async (token, appointmentData) => {
       appointmentData,
       {
         headers: {
-            Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${token}`,
         },
-        }
+      }
     );
     return response.data;
   } catch (error) {
@@ -54,7 +54,7 @@ export const fetchAllAppointments = async (token) => {
       "http://localhost:3000/appointment/getAllAppointments",
       {
         headers: {
-          Authorization: ``,
+          Authorization: `Bearer ${token}`,
         },
       }
     );
@@ -65,13 +65,14 @@ export const fetchAllAppointments = async (token) => {
   }
 };
 
-export const fetchAllUsers = async () => {
+export const fetchAllUsers = async (token) => {
   try {
     const response = await axios.get("http://localhost:3000/user/getAllUsers", {
       headers: {
-        Authorization: ``,
+        Authorization: `Bearer ${token}`,
       },
     });
+
     return response.data;
   } catch (error) {
     console.error("Error al obtener los usuarios:", error);
@@ -83,7 +84,7 @@ export const fetchAllDogs = async (token) => {
   try {
     const response = await axios.get("http://localhost:3000/dog/getAllDogs", {
       headers: {
-        Authorization: ``,
+        Authorization: `Bearer ${token}`,
       },
     });
     return response.data;
@@ -93,13 +94,13 @@ export const fetchAllDogs = async (token) => {
   }
 };
 
-export const fetchAllServices = async () => {
+export const fetchAllServices = async (token) => {
   try {
     const response = await axios.get(
       "http://localhost:3000/service/getAllServices",
       {
         headers: {
-          Authorization: ``,
+          Authorization: `Bearer ${token}`,
         },
       }
     );
@@ -116,9 +117,9 @@ export const deleteAppointment = async (token, appointmentId) => {
       `http://localhost:3000/appointment/delete/${appointmentId}`,
       {
         headers: {
-          Authorization: ``,
+            Authorization: `Bearer ${token}`,
         },
-      }
+        }
     );
     return response.data;
   } catch (error) {
@@ -127,16 +128,16 @@ export const deleteAppointment = async (token, appointmentId) => {
   }
 };
 
-export const updateServices = async (serviceData) => {
+export const updateServices = async (serviceData, token) => {
   try {
     const response = await axios.put(
       `http://localhost:3000/service/update/${serviceData.id}`,
       serviceData,
       {
         headers: {
-          Authorization: ``,
+            Authorization: `Bearer ${token}`,
         },
-      }
+        }
     );
     return response.data;
   } catch (error) {
@@ -145,16 +146,16 @@ export const updateServices = async (serviceData) => {
   }
 };
 
-export const updateUser = async (userData) => {
+export const updateUser = async (userData, token) => {
   try {
     const response = await axios.put(
       `http://localhost:3000/user/profile/${userData.id}`,
       userData,
       {
         headers: {
-          Authorization: "",
+            Authorization: `Bearer ${token}`,
         },
-      }
+        }
     );
     return response.data;
   } catch (error) {
@@ -163,11 +164,16 @@ export const updateUser = async (userData) => {
   }
 };
 
-export const registerDog = async (dogData) => {
+export const registerDog = async (dogData, token) => {
   try {
     const response = await axios.post(
       `http://localhost:3000/dog/register`,
-      dogData
+      dogData,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
     );
     return response.data;
   } catch (error) {
@@ -176,14 +182,14 @@ export const registerDog = async (dogData) => {
   }
 };
 
-export const updateDog = async (dogData) => {
+export const updateDog = async (dogData, token) => {
   try {
     const response = await axios.put(
       `http://localhost:3000/dog/profile/${dogData.id}`,
       dogData,
       {
         headers: {
-          Authorization: "",
+          Authorization: `Bearer ${token}`,
         },
       }
     );
@@ -194,10 +200,15 @@ export const updateDog = async (dogData) => {
   }
 };
 
-export const fetchAppointmentsByDogId = async (dogId) => {
+export const fetchAppointmentsByDogId = async (dogId, token) => {
   try {
     const response = await axios.get(
-      `http://localhost:3000/appointment/appointment/dog/${dogId}`
+      `http://localhost:3000/appointment/appointment/dog/${dogId}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
     );
     return response.data;
   } catch (error) {

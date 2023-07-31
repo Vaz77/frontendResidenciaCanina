@@ -2,12 +2,15 @@ import React, { useEffect, useState } from "react";
 import { fetchAllUsers, updateUser } from "../../services/apiCalls";
 import "./AllUsers.css";
 import Footer from "../../common/Footer/Footer";
+import { userData } from "../userSlice";
+import { useSelector } from "react-redux";
 
 const AllUsers = () => {
   const [users, setUsers] = useState([]);
   const [editingUser, setEditingUser] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [usersPerPage] = useState(5);
+  const { credentials } = useSelector(userData);
 
   useEffect(() => {
     getAllUsers();
@@ -15,7 +18,7 @@ const AllUsers = () => {
 
   const getAllUsers = async () => {
     try {
-      const usersData = await fetchAllUsers();
+      const usersData = await fetchAllUsers(credentials.token);
       setUsers(usersData.data);
     } catch (error) {
       console.error("Error al obtener los Users:", error);
@@ -50,7 +53,7 @@ const AllUsers = () => {
     setCurrentPage(pageNumber);
   };
   if (users.length === 0) {
-    return <p>No hay perros registrados</p>;
+    return <p>No hay usuarios que mostrar</p>;
   }
   return (
     <div className="users-container">
