@@ -10,14 +10,11 @@ const AppointmentsPage = () => {
   const [date, setDate] = useState("");
   const [observations, setObservations] = useState("");
   const [dog_name, setDog_name] = useState("");
-  const [dog_id, setDog_id] = useState("");
-  const [service_id, setService_id] = useState("");
   const [service_name, setService_name] = useState("");
   const [duration, setDuration] = useState("");
   const { credentials } = useSelector(userData);
-  const [serviceInputValue, setServiceInputValue] = useState("");
   const [suggestedServices, setSuggestedServices] = useState([]);
-  const [errorMessage, setErrorMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -31,14 +28,8 @@ const AppointmentsPage = () => {
       case "observations":
         setObservations(value);
         break;
-      case "dog_id":
-        setDog_id(value);
-        break;
       case "dog_name":
         setDog_name(value);
-        break;
-      case "service_id":
-        setService_id(value);
         break;
       case "service_name":
         setService_name(value);
@@ -57,10 +48,8 @@ const AppointmentsPage = () => {
         date,
         time,
         observations,
-        dog_id,
         dog_name,
         duration,
-        service_id,
         service_name,
       };
       const response = await createAppointment(
@@ -71,11 +60,9 @@ const AppointmentsPage = () => {
       setTime("");
       setDate("");
       setObservations("");
-      setDog_id("");
       setDog_name("");
-      setService_id("");
       setService_name("");
-      setErrorMessage('No puedes reservar citas, registrate!');
+      setErrorMessage("No puedes reservar citas, registrate!");
     } catch (error) {
       console.error("Error al crear la cita:", error);
     }
@@ -170,8 +157,8 @@ const AppointmentsPage = () => {
               id="service_name"
               name="service_name"
               required
-              value={serviceInputValue}
-              onChange={handleServiceInputChange}
+              value={service_name}
+              onChange={handleInputChange}
             />
             {suggestedServices.length > 0 && (
               <ul className="suggested-services-list">
@@ -199,17 +186,6 @@ const AppointmentsPage = () => {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="dog_id">Nº de afiliado del perro:</label>
-            <input
-              type="number"
-              id="dog_id"
-              name="dog_id"
-              required
-              value={dog_id}
-              onChange={handleInputChange}
-            />
-          </div>
-          <div className="form-group">
             <label htmlFor="observations">Observaciones:</label>
             <textarea
               id="observations"
@@ -224,7 +200,7 @@ const AppointmentsPage = () => {
           </button>
         </form>
       </section>
-      {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
+      {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
     </div>
   );
 };

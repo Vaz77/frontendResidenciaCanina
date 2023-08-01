@@ -13,9 +13,6 @@ import { useDispatch } from "react-redux";
 const Footer = () => {
   const user = useSelector((state) => state.user);
   const token = user.credentials.token;
-  const role = user.data.roleId;
-  const name = user.data.name;
-
   const dispatch = useDispatch();
 
   const handleLogout = () => {
@@ -120,9 +117,9 @@ const Footer = () => {
           <h5>Reservas</h5>
         </NavLink>
         {token && (
-        <NavLink as={NavLink} to="/userAppointment" exact="true">
-          <h5>Mis citas</h5>
-        </NavLink>
+          <NavLink as={NavLink} to="/userAppointment" exact="true">
+            <h5>Mis citas</h5>
+          </NavLink>
         )}
         {token ? (
           <NavLink
@@ -172,7 +169,7 @@ const Footer = () => {
           </div>
         </div>
         <p className="footerDerechos footer-rights">
-          &copy; {new Date().getFullYear()} Guarderia Canina. Todos los derechos
+          &copy; {new Date().getFullYear()} Hotel canino. Todos los derechos
           reservados.
         </p>
       </div>

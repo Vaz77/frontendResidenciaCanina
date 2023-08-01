@@ -15,6 +15,7 @@ import image1 from "../../assets/perrosFelices.jpg";
 import image2 from "../../assets/instalacionesPerros3.jpg";
 import image4 from "../../assets/excursionCanina.jpg";
 import image3 from "../../assets/perrosPIscina.jpeg";
+import { useDispatch } from "react-redux";
 
 const HomePage = () => {
   const [showImage, setShowImage] = useState(false);
@@ -32,6 +33,27 @@ const HomePage = () => {
   const user = useSelector((state) => state.user);
   const token = user.credentials.token;
   const role = user.data.roleId;
+  const dispatch = useDispatch();
+
+  const handleLogout = () => {
+    dispatch(logout());
+  };
+  const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+  const handleLoginModalOpen = () => {
+    setIsLoginModalOpen(true);
+    setIsRegisterModalOpen(false);
+  };
+  const handleLoginModalClose = () => {
+    setIsLoginModalOpen(false);
+  };
+  const handleRegisterModalOpen = () => {
+    setIsRegisterModalOpen(true);
+    setIsLoginModalOpen(false);
+  };
+  const handleRegisterModalClose = () => {
+    setIsRegisterModalOpen(false);
+  };
 
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -81,6 +103,21 @@ const HomePage = () => {
             >
               <h5>¡Haz tu reserva aquí!</h5>
             </NavLink>
+            {token ? (
+              <NavLink
+                as={NavLink}
+                to="/"
+                exact="true"
+                className="iniciar"
+                onClick={handleLogout}
+              >
+                <h5>Cerrar sesión</h5>
+              </NavLink>
+            ) : (
+              <NavLink as={NavLink} to="/" exact="true" className="inicio">
+                <h5 onClick={handleLoginModalOpen}>Iniciar Sesión</h5>
+              </NavLink>
+            )}
             <div className="reservar-cita-rope"></div>
           </div>
           <h1 className="textoBienvenida">
