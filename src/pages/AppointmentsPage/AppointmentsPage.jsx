@@ -4,10 +4,12 @@ import icon1 from "../../assets/flechaHaciaAbajo.png";
 import { createAppointment } from "../../services/apiCalls";
 import { useSelector } from "react-redux";
 import { userData } from "../userSlice";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 const AppointmentsPage = () => {
   const [time, setTime] = useState("");
-  const [date, setDate] = useState("");
+  const [selectedDate, setSelectedDate] = useState(null);
   const [observations, setObservations] = useState("");
   const [dog_name, setDog_name] = useState("");
   const [service_name, setService_name] = useState("");
@@ -24,7 +26,7 @@ const AppointmentsPage = () => {
         setTime(value);
         break;
       case "date":
-        setDate(value);
+        setSelectedDate(value);
         break;
       case "observations":
         setObservations(value);
@@ -46,7 +48,7 @@ const AppointmentsPage = () => {
     e.preventDefault();
     try {
       const appointmentData = {
-        date,
+        date: selectedDate,
         time,
         observations,
         dog_name,
@@ -59,14 +61,13 @@ const AppointmentsPage = () => {
       );
       setDuration("");
       setTime("");
-      setDate("");
+      setSelectedDate(null);
       setObservations("");
       setDog_name("");
       setService_name("");
       setSuccessMessage(
         "¡Reserva realizada con éxito! Te acabamos de enviar un email de confimación"
       );
-      setErrorMessage("No puedes reservar citas, registrate!");
       setErrorMessage("");
     } catch (error) {
       console.error("Error al crear la cita:", error);
@@ -124,13 +125,13 @@ const AppointmentsPage = () => {
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label htmlFor="date">Fecha de la cita:</label>
-            <input
-              type="text"
-              id="date"
-              name="date"
+            <DatePicker
+              selected={selectedDate}
+              onChange={(date) => setSelectedDate(date)}
+              dateFormat="dd/MM/yyyy"
               required
-              value={date}
-              onChange={handleInputChange}
+              className="custom-select"
+              placeholderText="Seleccione una fecha"
             />
           </div>
           <div className="form-group">
