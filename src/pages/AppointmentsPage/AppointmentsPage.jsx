@@ -15,6 +15,7 @@ const AppointmentsPage = () => {
   const { credentials } = useSelector(userData);
   const [suggestedServices, setSuggestedServices] = useState([]);
   const [errorMessage, setErrorMessage] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -62,7 +63,11 @@ const AppointmentsPage = () => {
       setObservations("");
       setDog_name("");
       setService_name("");
+      setSuccessMessage(
+        "¡Reserva realizada con éxito! Te acabamos de enviar un email de confimación"
+      );
       setErrorMessage("No puedes reservar citas, registrate!");
+      setErrorMessage("");
     } catch (error) {
       console.error("Error al crear la cita:", error);
     }
@@ -152,27 +157,21 @@ const AppointmentsPage = () => {
           </div>
           <div className="form-group">
             <label htmlFor="service_name">Nombre del servicio:</label>
-            <input
-              type="text"
+            <select
               id="service_name"
               name="service_name"
               required
               value={service_name}
               onChange={handleInputChange}
-            />
-            {suggestedServices.length > 0 && (
-              <ul className="suggested-services-list">
-                {suggestedServices.map((service) => (
-                  <ul
-                    key={service}
-                    className="suggested-service-item"
-                    onClick={() => handleServiceOptionClick(service)}
-                  >
-                    {service}
-                  </ul>
-                ))}
-              </ul>
-            )}
+              className="custom-select"
+            >
+              <option value="">Seleccione un servicio</option>
+              {availableServices.map((service) => (
+                <option key={service} value={service}>
+                  {service}
+                </option>
+              ))}
+            </select>
           </div>
           <div className="form-group">
             <label htmlFor="duration">Duración:</label>
@@ -201,6 +200,7 @@ const AppointmentsPage = () => {
         </form>
       </section>
       {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
+      {successMessage && <p style={{ color: "green" }}>{successMessage}</p>}
     </div>
   );
 };
