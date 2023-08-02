@@ -7,6 +7,7 @@ import { userData } from "../userSlice";
 import "react-datepicker/dist/react-datepicker.css";
 import "react-calendar/dist/Calendar.css";
 import Calendar from "react-calendar";
+import "react-datepicker/dist/react-datepicker.css";
 
 const AppointmentsPage = () => {
   const [time, setTime] = useState("");
@@ -19,6 +20,10 @@ const AppointmentsPage = () => {
   const [suggestedServices, setSuggestedServices] = useState([]);
   const [errorMessage, setErrorMessage] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
+  const [selectedDuration, setSelectedDuration] = useState("");
+  const [durationTime, setDurationTime] = useState("");
+  const [dateExit, setDateExit] = useState("");
+  const [showError, setShowError] = useState(false);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -38,13 +43,17 @@ const AppointmentsPage = () => {
       case "service_name":
         setService_name(value);
         break;
-      case "duration":
-        setDuration(value);
+      case "duration-time":
+        setDurationTime(value);
+        break;
+      case "date_exit":
+        setDateExit(value);
         break;
       default:
         break;
     }
   };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -53,8 +62,9 @@ const AppointmentsPage = () => {
         time,
         observations,
         dog_name,
-        duration,
+        duration: durationTime,
         service_name,
+        date_exit: dateExit,
       };
       const response = await createAppointment(
         credentials.token,
@@ -66,14 +76,21 @@ const AppointmentsPage = () => {
       setObservations("");
       setDog_name("");
       setService_name("");
-      setSuccessMessage(
-        "¡Reserva realizada con éxito! Te acabamos de enviar un email de confimación"
-      );
       setErrorMessage("");
+      setSuccessMessage(
+        "¡Reserva realizada con éxito! Te acabamos de enviar un email de confirmación."
+      );
+      setShowError(false);
     } catch (error) {
       console.error("Error al crear la cita:", error);
+      setSuccessMessage("");
+      setErrorMessage(
+        "Ha ocurrido un error al crear la cita. Por favor, inténtalo nuevamente."
+      );
+      setShowError(true);
     }
   };
+
   const availableServices = [
     "Residencia",
     "Guardería",
@@ -82,6 +99,7 @@ const AppointmentsPage = () => {
     "Veterinario",
     "Baños e higiene",
   ];
+
   const handleServiceInputChange = (event) => {
     const inputValue = event.target.value;
     setServiceInputValue(inputValue);
@@ -95,6 +113,11 @@ const AppointmentsPage = () => {
   const handleServiceOptionClick = (service) => {
     setServiceInputValue(service);
     setSuggestedServices([]);
+  };
+
+  const handleDurationDateChange = (e) => {
+    const { value } = e.target;
+    setSelectedDuration(value);
   };
 
   return (
@@ -120,27 +143,47 @@ const AppointmentsPage = () => {
         </div>
       </section>
       <h2 className="textReserva">
-          Rellena los datos y un profesional se pondrá en contacto contigo
-        </h2>
+        Rellena los datos y un profesional se pondrá en contacto contigo
+      </h2>
       <section className="other-section">
-      <div className="form-group2">
-            <label htmlFor="date"></label>
-            <div className="calendar-container">
+        <div className="form-group2">
+          <label htmlFor="date"></label>
+          <div className="calendar-container">
             <Calendar
               value={selectedDate}
               onChange={(date) => setSelectedDate(date)}
             />
           </div>
-          </div>
+        </div>
         <form onSubmit={handleSubmit}>
           <div className="form-group">
-            <label htmlFor="time">Hora de la cita:</label>
+            <label htmlFor="time">Hora de entrada:</label>
             <input
-              type="text"
+              type="time"
               id="time"
               name="time"
               required
               value={time}
+              onChange={handleInputChange}
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="date_exit">Fecha de salida:</label>
+            <input
+              type="date"
+              id="date_exit"
+              name="date_exit"
+              required
+              value={dateExit}
+              onChange={handleInputChange}
+            />
+            <label htmlFor="duration-time">Hora de salida:</label>
+            <input
+              type="time"
+              id="duration-time"
+              name="duration-time"
+              required
+              value={durationTime}
               onChange={handleInputChange}
             />
           </div>
@@ -174,17 +217,6 @@ const AppointmentsPage = () => {
             </select>
           </div>
           <div className="form-group">
-            <label htmlFor="duration">Duración:</label>
-            <input
-              type="text"
-              id="duration"
-              name="duration"
-              required
-              value={duration}
-              onChange={handleInputChange}
-            />
-          </div>
-          <div className="form-group">
             <label htmlFor="observations">Observaciones:</label>
             <textarea
               id="observations"
@@ -197,10 +229,12 @@ const AppointmentsPage = () => {
           <button className="custom-button" type="submit">
             Reservar cita
           </button>
+          {successMessage && (
+            <div className="success-message">{successMessage}</div>
+          )}
+          {errorMessage && <div className="error-message">{errorMessage}</div>}
         </form>
       </section>
-      {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
-      {successMessage && <p style={{ color: "green" }}>{successMessage}</p>}
     </div>
   );
 };

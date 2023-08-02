@@ -284,6 +284,33 @@ textarea {
   margin-right: 20em;
 }
 
+.success-message {
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #d0f0c0;
+  color: #007000;
+  border: 1px solid #007000;
+  border-radius: 5px;
+}
+
+.error-message {
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #f0c0c0;
+  color: #700000;
+  border: 1px solid #700000;
+  border-radius: 5px;
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
 @media screen and (max-width: 768px) {
   .appointments-page {
     padding: 10px;
