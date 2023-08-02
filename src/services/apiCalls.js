@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 
 export const registerUser = async (body) => {
   try {
-    let res = await axios.post("http://localhost:3000/auth/register", body);
+    let res = await axios.post("https://backend-residencia-canina.vercel.app/auth/register", body);
     console.log("Response from server:", body);
     return res.data.token;
   } catch (error) {
@@ -13,7 +13,7 @@ export const registerUser = async (body) => {
 export const loginUser = async (formData) => {
   try {
     const response = await axios.post(
-      "http://localhost:3000/auth/login",
+      "https://backend-residencia-canina.vercel.app/auth/login",
       formData
     );
     return response.data.token;
@@ -23,7 +23,7 @@ export const loginUser = async (formData) => {
 };
 
 export const logoutUser = async (body) => {
-  let res = await axios.post("http://localhost:3000/auth/logout", body);
+  let res = await axios.post("https://backend-residencia-canina.vercel.app/auth/logout", body);
   const authToken = res.data.token;
   const dispatch = useDispatch();
   dispatch(setToken(authToken));
@@ -34,7 +34,7 @@ export const createAppointment = async (token, appointmentData) => {
   console.log(appointmentData);
   try {
     const response = await axios.post(
-      "http://localhost:3000/appointment",
+      "https://backend-residencia-canina.vercel.app/appointment",
       appointmentData,
       {
         headers: {
@@ -51,7 +51,7 @@ export const createAppointment = async (token, appointmentData) => {
 export const fetchAllAppointments = async (token) => {
   try {
     const response = await axios.get(
-      "http://localhost:3000/appointment/getAllAppointments",
+      "https://backend-residencia-canina.vercel.app/appointment/getAllAppointments",
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -67,7 +67,7 @@ export const fetchAllAppointments = async (token) => {
 
 export const fetchAllUsers = async (token) => {
   try {
-    const response = await axios.get("http://localhost:3000/user/getAllUsers", {
+    const response = await axios.get("https://backend-residencia-canina.vercel.app/user/getAllUsers", {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -82,7 +82,7 @@ export const fetchAllUsers = async (token) => {
 
 export const fetchAllDogs = async (token) => {
   try {
-    const response = await axios.get("http://localhost:3000/dog/getAllDogs", {
+    const response = await axios.get("https://backend-residencia-canina.vercel.app/dog/getAllDogs", {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -97,7 +97,7 @@ export const fetchAllDogs = async (token) => {
 export const fetchAllServices = async (token) => {
   try {
     const response = await axios.get(
-      "http://localhost:3000/service/getAllServices",
+      "https://backend-residencia-canina.vercel.app/service/getAllServices",
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -114,7 +114,7 @@ export const fetchAllServices = async (token) => {
 export const deleteAppointment = async (token, appointmentId) => {
   try {
     const response = await axios.delete(
-      `http://localhost:3000/appointment/delete/${appointmentId}`,
+      `https://backend-residencia-canina.vercel.app/appointment/delete/${appointmentId}`,
       {
         headers: {
             Authorization: `Bearer ${token}`,
@@ -131,7 +131,7 @@ export const deleteAppointment = async (token, appointmentId) => {
 export const updateServices = async (serviceData, token) => {
   try {
     const response = await axios.put(
-      `http://localhost:3000/service/update/${serviceData.id}`,
+      `https://backend-residencia-canina.vercel.app/service/update/${serviceData.id}`,
       serviceData,
       {
         headers: {
@@ -149,7 +149,7 @@ export const updateServices = async (serviceData, token) => {
 export const updateUser = async (userData, token) => {
   try {
     const response = await axios.put(
-      `http://localhost:3000/user/profile/${userData.id}`,
+      `https://backend-residencia-canina.vercel.app/user/profile/${userData.id}`,
       userData,
       {
         headers: {
@@ -167,7 +167,7 @@ export const updateUser = async (userData, token) => {
 export const registerDog = async (dogData, token) => {
   try {
     const response = await axios.post(
-      `http://localhost:3000/dog/register`,
+      `https://backend-residencia-canina.vercel.app/dog/register`,
       dogData,
       {
         headers: {
@@ -185,7 +185,7 @@ export const registerDog = async (dogData, token) => {
 export const updateDog = async (dogData, token) => {
   try {
     const response = await axios.put(
-      `http://localhost:3000/dog/profile/${dogData.id}`,
+      `https://backend-residencia-canina.vercel.app/dog/profile/${dogData.id}`,
       dogData,
       {
         headers: {
@@ -203,7 +203,7 @@ export const updateDog = async (dogData, token) => {
 export const fetchAppointmentsByDogId = async (dogId, token) => {
   try {
     const response = await axios.get(
-      `http://localhost:3000/appointment/appointment/dog/${dogId}`,
+      `https://backend-residencia-canina.vercel.app/appointment/appointment/dog/${dogId}`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -220,7 +220,7 @@ export const fetchAppointmentsByDogId = async (dogId, token) => {
 export const fetchAppointmentsByEmail = async (email, token) => {
   try {
     const response = await axios.get(
-      `http://localhost:3000/appointment/getAppointmentsByEmail/${email}`,
+      `https://backend-residencia-canina.vercel.app/appointment/getAppointmentsByEmail/${email}`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
