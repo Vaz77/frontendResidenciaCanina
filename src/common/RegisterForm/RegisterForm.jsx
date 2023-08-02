@@ -89,7 +89,7 @@ const RegisterForm = ({ isOpen, onRequestClose }) => {
           <div className="form-group">
             <label htmlFor="password">Contraseña:</label>
             <input
-              type="text"
+              type="password"
               id="password"
               value={formData.password}
               onChange={handleChange}
