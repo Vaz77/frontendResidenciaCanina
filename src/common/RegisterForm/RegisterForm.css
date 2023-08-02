@@ -177,3 +177,24 @@ input {
     justify-content: center;
   }
 }
+@media screen and (max-width: 480px) {
+  .register-modal {
+    width: 90%;
+    margin-top: 8em;
+    padding: 10px;
+  }
+  .btn-cancel,
+  .btn-register {
+    max-width: 150px;
+    padding: 8px 12px;
+  }
+  label {
+    font-size: 12px;
+  }
+  input {
+    font-size: 12px;
+  }
+  h2 {
+    font-size: 20px;
+  }
+}
