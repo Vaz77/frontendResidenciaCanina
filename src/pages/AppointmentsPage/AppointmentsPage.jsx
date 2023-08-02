@@ -4,8 +4,9 @@ import icon1 from "../../assets/flechaHaciaAbajo.png";
 import { createAppointment } from "../../services/apiCalls";
 import { useSelector } from "react-redux";
 import { userData } from "../userSlice";
-import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import "react-calendar/dist/Calendar.css";
+import Calendar from "react-calendar";
 
 const AppointmentsPage = () => {
   const [time, setTime] = useState("");
@@ -118,22 +119,20 @@ const AppointmentsPage = () => {
           </div>
         </div>
       </section>
-      <section className="other-section">
-        <h2 className="textReserva">
+      <h2 className="textReserva">
           Rellena los datos y un profesional se pondrá en contacto contigo
         </h2>
-        <form onSubmit={handleSubmit}>
-          <div className="form-group">
-            <label htmlFor="date">Fecha de la cita:</label>
-            <DatePicker
-              selected={selectedDate}
+      <section className="other-section">
+      <div className="form-group2">
+            <label htmlFor="date"></label>
+            <div className="calendar-container">
+            <Calendar
+              value={selectedDate}
               onChange={(date) => setSelectedDate(date)}
-              dateFormat="dd/MM/yyyy"
-              required
-              className="custom-select"
-              placeholderText="Seleccione una fecha"
             />
           </div>
+          </div>
+        <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label htmlFor="time">Hora de la cita:</label>
             <input

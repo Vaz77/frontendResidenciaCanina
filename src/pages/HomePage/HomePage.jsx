@@ -103,21 +103,6 @@ const HomePage = () => {
             >
               <h5>¡Haz tu reserva aquí!</h5>
             </NavLink>
-            {token ? (
-              <NavLink
-                as={NavLink}
-                to="/"
-                exact="true"
-                className="iniciar"
-                onClick={handleLogout}
-              >
-                <h5>Cerrar sesión</h5>
-              </NavLink>
-            ) : (
-              <NavLink as={NavLink} to="/" exact="true" className="inicio">
-                <h5 onClick={handleLoginModalOpen}>Iniciar Sesión</h5>
-              </NavLink>
-            )}
             <div className="reservar-cita-rope"></div>
           </div>
           <h1 className="textoBienvenida">
