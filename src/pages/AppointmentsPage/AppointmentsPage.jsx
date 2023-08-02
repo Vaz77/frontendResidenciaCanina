@@ -78,7 +78,7 @@ const AppointmentsPage = () => {
       setService_name("");
       setErrorMessage("");
       setSuccessMessage(
-        "¡Reserva realizada con éxito! Te acabamos de enviar un email de confirmación."
+        "¡Reserva realizada con éxito! Te llegará un correo de confirmación"
       );
       setShowError(false);
     } catch (error) {

@@ -1,19 +1,24 @@
 import React, { useState } from "react";
-import { fetchAppointmentsByDogId } from "../../services/apiCalls";
+import { fetchAppointmentsByEmail } from "../../services/apiCalls";
 import "./UserAppointment.css";
 import Footer from "../../common/Footer/Footer";
+import { useSelector } from "react-redux";
+import { userData } from "../userSlice";
 
 const UserAppointment = () => {
-  const [dogId, setDogId] = useState("");
+  const [email, setEmail] = useState("");
   const [appointments, setAppointments] = useState([]);
   const [showNoAppointmentsMsg, setShowNoAppointmentsMsg] = useState(false);
-
+  const { credentials } = useSelector(userData);
   const handleSearch = async () => {
     try {
-      console.log("ID del perro:", dogId);
-      const response = await fetchAppointmentsByDogId(dogId);
-      if (response.data && Array.isArray(response.data)) {
-        setAppointments(response.data);
+      console.log("Correo electrónico del usuario:", email);
+      const appointments = await fetchAppointmentsByEmail(
+        email,
+        credentials.token
+      );
+      if (appointments && Array.isArray(appointments)) {
+        setAppointments(appointments);
         setShowNoAppointmentsMsg(false);
       } else {
         setAppointments([]);
@@ -23,40 +28,49 @@ const UserAppointment = () => {
       console.error("Error al obtener las citas:", error);
     }
   };
-
   return (
     <div className="user-appointment-container">
-      <h1>Buscar cita de su perro</h1>
+      <h1>Buscar mis citas</h1>
       <div className="search-container">
         <input
           type="text"
-          value={dogId}
-          onChange={(e) => setDogId(e.target.value)}
-          placeholder="Nº afiliado del perro"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="Correo electrónico"
         />
         <button onClick={handleSearch}>Buscar Citas</button>
       </div>
       {showNoAppointmentsMsg ? (
         <p className="no-appointments-msg">
-          No hay citas registradas para este perro
+          No hay citas registradas para este correo electrónico.
         </p>
       ) : (
         <div className="appointments-list">
-          {appointments.length > 0 && <h2>Citas reservadas:</h2>}
+          {appointments.length > 0 && <h2></h2>}
           {appointments.length > 0 ? (
-            <ul>
-              {appointments.map((appointmentDog) => (
-                <li key={appointmentDog.id} className="appointment-item">
-                  <div className="appointment-info">
-                    <p>Fecha: {appointmentDog.date}</p>
-                    <p>Hora: {appointmentDog.time}</p>
-                    <p>Observaciones: {appointmentDog.observations}</p>
-                    <p>Duración: {appointmentDog.duration}</p>
-                    <p>Servicio: {appointmentDog.service_name}</p>
+            <div className="card-container">
+              {Array.from({ length: Math.ceil(appointments.length / 3) }).map(
+                (_, index) => (
+                  <div className="card-row" key={index}>
+                    {appointments
+                      .slice(index * 3, index * 3 + 3)
+                      .map((appointment) => (
+                        <div className="appointment-item" key={appointment.id}>
+                          <div className="appointment-info">
+                            <p>Perro: {appointment.dog_name}</p>
+                            <p>Fecha: {appointment.date}</p>
+                            <p>Hora de llegada: {appointment.time}</p>
+                            <p>Servicio: {appointment.service_name}</p>
+                            <p>Fecha de salida: {appointment.date_exit}</p>
+                            <p>Hora de salida: {appointment.duration}</p>
+                            <p>Observaciones: {appointment.observations}</p>
+                          </div>
+                        </div>
+                      ))}
                   </div>
-                </li>
-              ))}
-            </ul>
+                )
+              )}
+            </div>
           ) : null}
         </div>
       )}

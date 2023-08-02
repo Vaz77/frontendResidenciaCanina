@@ -216,3 +216,20 @@ export const fetchAppointmentsByDogId = async (dogId, token) => {
     throw error;
   }
 };
+
+export const fetchAppointmentsByEmail = async (email, token) => {
+  try {
+    const response = await axios.get(
+      `http://localhost:3000/appointment/getAppointmentsByEmail/${email}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    return response.data;
+  } catch (error) {
+    console.error("Error al obtener las citas:", error);
+    throw error;
+  }
+};
