@@ -9,6 +9,7 @@ export const userSlice = createSlice({
     data: {
       name: "",
       roleId: "2",
+      email: ""
     },
   },
   reducers: {
@@ -17,6 +18,7 @@ export const userSlice = createSlice({
       console.log("Login - Token:", payload.token);
       console.log("Login - Role:", payload.roleId);
       console.log("Login - Name:", payload.name);
+      state.data.email = payload.email
       state.credentials.token = payload.token;
       state.data.name = payload.name;
       state.data.roleId = payload.roleId;

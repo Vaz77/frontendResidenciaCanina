@@ -9,7 +9,8 @@ const UserAppointment = () => {
   const [email, setEmail] = useState("");
   const [appointments, setAppointments] = useState([]);
   const [showNoAppointmentsMsg, setShowNoAppointmentsMsg] = useState(false);
-  const { credentials } = useSelector(userData);
+  const data = useSelector(userData);
+  console.log(data)
   const handleSearch = async () => {
     try {
       console.log("Correo electrónico del usuario:", email);
