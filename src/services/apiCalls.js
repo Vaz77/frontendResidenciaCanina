@@ -236,3 +236,20 @@ export const fetchAppointmentsByEmail = async (email, token) => {
     throw error;
   }
 };
+
+export const fetchUserAppointments = async (token) => {
+  try {
+    const response = await axios.get(
+      `${API_URL}/appointment/getUserAppointments`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    return response.data;
+  } catch (error) {
+    console.error("Error al obtener las citas:", error);
+    throw error;
+  }
+};
