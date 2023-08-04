@@ -42,7 +42,7 @@ const LoginForm = ({ isOpen, onRequestClose, onRegisterModalOpen }) => {
         navigate("/");
       })
       .catch((error) => {
-        console.log("Error durante el inicio de sesión:", error.message);
+        console.log("Error durante el inicio de sesión:", error);
       });
   };
 

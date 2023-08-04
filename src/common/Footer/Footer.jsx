@@ -12,6 +12,7 @@ import { useDispatch } from "react-redux";
 
 const Footer = () => {
   const user = useSelector((state) => state.user);
+  const roleId = useSelector((state) => state.user.data.roleId);
   const token = user.credentials.token;
   const dispatch = useDispatch();
 
@@ -116,7 +117,7 @@ const Footer = () => {
         <NavLink className="inicio" onClick={handleAppointmentsClick}>
           <h5>Reservas</h5>
         </NavLink>
-        {token && (
+        {roleId===2 && (
           <NavLink as={NavLink} to="/userAppointment" exact="true">
             <h5>Mis citas</h5>
           </NavLink>
