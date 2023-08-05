@@ -12,7 +12,6 @@ const DogsPage = () => {
     pathologies: "",
     userId: "",
   });
-
   const handleChange = (event) => {
     const { name, value } = event.target;
     setDogData({ ...dogData, [name]: value });

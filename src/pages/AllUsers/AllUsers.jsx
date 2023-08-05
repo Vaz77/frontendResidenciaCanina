@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { fetchAllUsers, updateUser } from "../../services/apiCalls";
 import "./AllUsers.css";
-import Footer from "../../common/Footer/Footer";
 import { userData } from "../userSlice";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -12,6 +11,14 @@ const AllUsers = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [usersPerPage] = useState(5);
   const { credentials } = useSelector(userData);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const fakeAPICall = setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
+    return () => clearTimeout(fakeAPICall);
+  }, []);
 
   useEffect(() => {
     getAllUsers();
@@ -54,7 +61,6 @@ const AllUsers = () => {
     setCurrentPage(pageNumber);
   };
   if (users.length === 0) {
-    return <p>No hay usuarios que mostrar</p>;
   }
   return (
     <div className="users-container">
@@ -70,89 +76,95 @@ const AllUsers = () => {
         ))}
       </div>
       <h1 className="users-title">Todos los usuarios registrados</h1>
-      <div className="users-list">
-        {currentUsers.map((user) => (
-          <div key={user.id} className="user-card">
-            {editingUser && editingUser.id === user.id ? (
-              <div>
-                <input
-                  type="text"
-                  value={editingUser.name}
-                  onChange={(e) =>
-                    setEditingUser({
-                      ...editingUser,
-                      name: e.target.value,
-                    })
-                  }
-                />
-                <input
-                  type="text"
-                  value={editingUser.surname}
-                  onChange={(e) =>
-                    setEditingUser({
-                      ...editingUser,
-                      surname: e.target.value,
-                    })
-                  }
-                />
-                <input
-                  type="text"
-                  value={editingUser.email}
-                  onChange={(e) =>
-                    setEditingUser({
-                      ...editingUser,
-                      email: e.target.value,
-                    })
-                  }
-                />
-                <input
-                  type="text"
-                  value={editingUser.phone}
-                  onChange={(e) =>
-                    setEditingUser({
-                      ...editingUser,
-                      phone: e.target.value,
-                    })
-                  }
-                />
-                <input
-                  type="text"
-                  value={editingUser.dni}
-                  onChange={(e) =>
-                    setEditingUser({
-                      ...editingUser,
-                      dni: e.target.value,
-                    })
-                  }
-                />
-                <button className="botonUser2" onClick={handleUpdateUser}>
-                  Guardar
-                </button>
-                <button
-                  className="botonUser2"
-                  onClick={() => setEditingUser(null)}
-                >
-                  Cancelar
-                </button>
-              </div>
-            ) : (
-              <div>
-                <p>Nombre: {user.name}</p>
-                <p>Apellidos: {user.surname}</p>
-                <p>Email: {user.email}</p>
-                <p>Phone: {user.phone}</p>
-                <p>Dni: {user.dni}</p>
-                <button
-                  className="botonUser"
-                  onClick={() => handleEditUser(user.id)}
-                >
-                  Editar
-                </button>
-              </div>
-            )}
-          </div>
-        ))}
-      </div>
+      {isLoading ? (
+        <div className="loading-animation">
+          <span>Cargando todos los usuarios registrados...</span>
+        </div>
+      ) : (
+        <div className="users-list">
+          {currentUsers.map((user) => (
+            <div key={user.id} className="user-card">
+              {editingUser && editingUser.id === user.id ? (
+                <div>
+                  <input
+                    type="text"
+                    value={editingUser.name}
+                    onChange={(e) =>
+                      setEditingUser({
+                        ...editingUser,
+                        name: e.target.value,
+                      })
+                    }
+                  />
+                  <input
+                    type="text"
+                    value={editingUser.surname}
+                    onChange={(e) =>
+                      setEditingUser({
+                        ...editingUser,
+                        surname: e.target.value,
+                      })
+                    }
+                  />
+                  <input
+                    type="text"
+                    value={editingUser.email}
+                    onChange={(e) =>
+                      setEditingUser({
+                        ...editingUser,
+                        email: e.target.value,
+                      })
+                    }
+                  />
+                  <input
+                    type="text"
+                    value={editingUser.phone}
+                    onChange={(e) =>
+                      setEditingUser({
+                        ...editingUser,
+                        phone: e.target.value,
+                      })
+                    }
+                  />
+                  <input
+                    type="text"
+                    value={editingUser.dni}
+                    onChange={(e) =>
+                      setEditingUser({
+                        ...editingUser,
+                        dni: e.target.value,
+                      })
+                    }
+                  />
+                  <button className="botonUser2" onClick={handleUpdateUser}>
+                    Guardar
+                  </button>
+                  <button
+                    className="botonUser2"
+                    onClick={() => setEditingUser(null)}
+                  >
+                    Cancelar
+                  </button>
+                </div>
+              ) : (
+                <div>
+                  <p>Nombre: {user.name}</p>
+                  <p>Apellidos: {user.surname}</p>
+                  <p>Email: {user.email}</p>
+                  <p>Phone: {user.phone}</p>
+                  <p>Dni: {user.dni}</p>
+                  <button
+                    className="botonUser"
+                    onClick={() => handleEditUser(user.id)}
+                  >
+                    Editar
+                  </button>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      )}
       <div className="pagination">
         {Array.from({ length: totalPages }).map((_, index) => (
           <button

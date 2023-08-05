@@ -19,9 +19,7 @@ const UserAppointment = () => {
     <div className="user-appointment-container">
       <h1>Mis citas</h1>
       {showNoAppointmentsMsg ? (
-        <p className="no-appointments-msg">
-          No hay citas registradas para este correo electrónico.
-        </p>
+        <p className="no-appointments-msg"></p>
       ) : (
         <div className="appointments-list">
           {appointments.map((appointment) => (

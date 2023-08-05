@@ -14,6 +14,8 @@ function GetAllAppointments() {
   const [appointments, setAppointments] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [selectedAppointmentId, setSelectedAppointmentId] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+
   const getAllAppointments = async () => {
     try {
       const fetchedAppointments = await fetchAllAppointments(credentials.token);
@@ -23,8 +25,15 @@ function GetAllAppointments() {
     }
   };
   useEffect(() => {
+    setIsLoading(true);
     getAllAppointments();
+    const fakeAPICall = setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
+
+    return () => clearTimeout(fakeAPICall);
   }, [credentials.token]);
+
   const handleDeleteAppointment = async (appointmentId) => {
     try {
       await deleteAppointment(credentials.token, appointmentId);
@@ -46,28 +55,36 @@ function GetAllAppointments() {
       <div>
         <h2 className="misCitas">Todas las citas</h2>
       </div>
-      {appointments.length ? (
-        <div className="appointmentsList">
-          {appointments.map((appointment) => {
-            return (
-              <div key={appointment.id} className="appointmentCard">
-                <p>Hora de entrada: {appointment.time}</p>
-                <p>Fecha de entrada: {appointment.date}</p>
-                <p>Nombre del perro: {appointment.dog_name}</p>
-                <p>Servicio: {appointment.service_name}</p>
-                <p>Fecha de salida: {appointment.date_exit}</p>
-                <p>Hora de salida: {appointment.duration}</p>
-                <p>Observaciones: {appointment.observations}</p>
-                <button onClick={() => handleOpenModal(appointment.id)}>
-                  Eliminar Cita
-                </button>
-                <hr />
-              </div>
-            );
-          })}
+      {isLoading ? (
+        <div className="loading-animation">
+          <span>Cargando todas las citas registradas...</span>
         </div>
       ) : (
-        <p className="loadingAppointments">No hay citas disponibles.</p>
+        <>
+          {appointments.length ? (
+            <div className="appointmentsList">
+              {appointments.map((appointment) => {
+                return (
+                  <div key={appointment.id} className="appointmentCard">
+                    <p>Hora de entrada: {appointment.time}</p>
+                    <p>Fecha de entrada: {appointment.date}</p>
+                    <p>Nombre del perro: {appointment.dog_name}</p>
+                    <p>Servicio: {appointment.service_name}</p>
+                    <p>Fecha de salida: {appointment.date_exit}</p>
+                    <p>Hora de salida: {appointment.duration}</p>
+                    <p>Observaciones: {appointment.observations}</p>
+                    <button onClick={() => handleOpenModal(appointment.id)}>
+                      Eliminar Cita
+                    </button>
+                    <hr />
+                  </div>
+                );
+              })}
+            </div>
+          ) : (
+            <p className="loadingAppointments">No hay citas disponibles.</p>
+          )}
+        </>
       )}
       {showModal && (
         <div className="modal">
