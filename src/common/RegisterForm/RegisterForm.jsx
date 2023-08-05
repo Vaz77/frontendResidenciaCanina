@@ -14,6 +14,12 @@ const RegisterForm = ({ isOpen, onRequestClose }) => {
     password: "",
   });
 
+  const closeForm = () => {
+    onRequestClose();
+  };
+
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+
   const handleChange = (event) => {
     const { id, value } = event.target;
     setFormData((prevFormData) => ({
@@ -26,6 +32,10 @@ const RegisterForm = ({ isOpen, onRequestClose }) => {
     event.preventDefault();
     try {
       const token = await registerUser(formData);
+      setShowSuccessMessage(true);
+      setTimeout(() => {
+        closeForm();
+      }, 2000);
     } catch (error) {
       console.error(error);
     }
@@ -40,6 +50,9 @@ const RegisterForm = ({ isOpen, onRequestClose }) => {
     >
       <div className="register-modal-content">
         <h2>Registro de Usuario</h2>
+        {showSuccessMessage && (
+          <div className="success-message">Registro existoso!</div>
+        )}
         <form className="register-form">
           <div className="form-group">
             <label htmlFor="name">Nombre:</label>
