@@ -69,7 +69,7 @@ const AllUsers = () => {
           </button>
         ))}
       </div>
-      <h1 className="users-title">Todos los users registrados</h1>
+      <h1 className="users-title">Todos los usuarios registrados</h1>
       <div className="users-list">
         {currentUsers.map((user) => (
           <div key={user.id} className="user-card">

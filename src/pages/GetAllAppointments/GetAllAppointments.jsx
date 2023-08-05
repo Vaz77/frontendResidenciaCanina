@@ -51,12 +51,13 @@ function GetAllAppointments() {
           {appointments.map((appointment) => {
             return (
               <div key={appointment.id} className="appointmentCard">
-                <p>Hora: {appointment.time}</p>
-                <p>Fecha: {appointment.date}</p>
-                <p>Observaciones: {appointment.observations}</p>
+                <p>Hora de entrada: {appointment.time}</p>
+                <p>Fecha de entrada: {appointment.date}</p>
                 <p>Nombre del perro: {appointment.dog_name}</p>
-                <p>Servicio: {appointment.service_id}</p>
-                <p>Duracion: {appointment.duration}</p>
+                <p>Servicio: {appointment.service_name}</p>
+                <p>Fecha de salida: {appointment.date_exit}</p>
+                <p>Hora de salida: {appointment.duration}</p>
+                <p>Observaciones: {appointment.observations}</p>
                 <button onClick={() => handleOpenModal(appointment.id)}>
                   Eliminar Cita
                 </button>

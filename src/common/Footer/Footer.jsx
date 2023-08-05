@@ -141,7 +141,7 @@ const Footer = () => {
       <div className="footer-container">
         <div className="footer-content footer-info">
           <p className="textPhone">
-            Teléfono: 692157845 | Email: info@guarderiacanina.com
+            Teléfono: 692157845 | Email: info@hotelcanino.com
           </p>
         </div>
         <div className="footer-content footer-social">

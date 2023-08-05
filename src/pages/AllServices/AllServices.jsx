@@ -102,7 +102,7 @@ const AllServices = () => {
               </div>
             ) : (
               <div>
-                <p>Nombre del servicio: {service.name}</p>
+                <p>Nombre del servicio: {service.service_name}</p>
                 <p>Descripción: {service.description}</p>
                 <p>Precio: {service.price}</p>
                 <button

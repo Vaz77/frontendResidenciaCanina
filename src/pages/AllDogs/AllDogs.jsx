@@ -9,11 +9,9 @@ const AllDogs = () => {
   const { credentials } = useSelector(userData);
   const [dogs, setDogs] = useState([]);
   const [editingDog, setEditingDog] = useState(null);
-
   useEffect(() => {
     getAllDogs();
   }, [credentials.token]);
-
   const getAllDogs = async () => {
     try {
       const dogsData = await fetchAllDogs(credentials.token);
@@ -22,12 +20,10 @@ const AllDogs = () => {
       console.error("Error al obtener los servicios:", error);
     }
   };
-
   const handleEditDog = (dogId) => {
     const dogToEdit = dogs.find((dog) => dog.id === dogId);
     setEditingDog(dogToEdit);
   };
-
   const handleUpdateDog = async () => {
     try {
       if (editingDog && editingDog.id) {
@@ -45,7 +41,6 @@ const AllDogs = () => {
   if (dogs.length === 0) {
     return <p>No hay perros registrados</p>;
   }
-
   return (
     <div className="dogs-container">
       <h1 className="dogs-title">Todos los perros registrados</h1>
@@ -106,7 +101,8 @@ const AllDogs = () => {
               </div>
             ) : (
               <div>
-                <p>Nombre del perro: {dog.name}</p>
+                <p>Nombre del perro: {dog.dog_name}</p>
+                <p>Raza: {dog.breed}</p>
                 <p>Edad: {dog.age}</p>
                 <p>Peso: {dog.wheight}</p>
                 <p>Patologías: {dog.pathologies}</p>

@@ -1,7 +1,13 @@
-.users-container {
+body {
+  margin: 0;
+  padding: 0;
   background-color: #c1b59f;
-  padding: 20px;
+  background-size: cover;
+  background-repeat: no-repeat;
   font-family: Arial, sans-serif;
+}
+.users-container {
+  padding: 20px;
 }
 
 .users-title {
@@ -23,7 +29,7 @@
   width: calc(50% - 20px);
   box-sizing: border-box;
   margin-bottom: 20px;
-  padding: 5.5px;
+  padding: 5px;
   min-height: 200px;
 }
 
