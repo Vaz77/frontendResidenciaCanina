@@ -1,7 +1,6 @@
 .dogs-page {
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: center;
   min-height: 100vh;
   display: flex;
   justify-content: center;
@@ -44,11 +43,11 @@
   background-color: #c1b59f;
 }
 
-
 .dog-form {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 15em;
 }
 
 .dog-form input {

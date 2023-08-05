@@ -117,7 +117,7 @@ const Footer = () => {
         <NavLink className="inicio" onClick={handleAppointmentsClick}>
           <h5>Reservas</h5>
         </NavLink>
-        {roleId===2 && (
+        {roleId === 2 && (
           <NavLink as={NavLink} to="/userAppointment" exact="true">
             <h5>Mis citas</h5>
           </NavLink>

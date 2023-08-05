@@ -1,15 +1,11 @@
 import React, { useEffect, useState } from "react";
-import {
-  fetchAppointmentsByEmail,
-  fetchUserAppointments,
-} from "../../services/apiCalls";
+import { Link } from "react-router-dom";
+import { fetchUserAppointments } from "../../services/apiCalls";
 import "./UserAppointment.css";
-import Footer from "../../common/Footer/Footer";
 import { useSelector } from "react-redux";
 import { userData } from "../userSlice";
 
 const UserAppointment = () => {
-  const [email, setEmail] = useState("");
   const [appointments, setAppointments] = useState([]);
   const [showNoAppointmentsMsg, setShowNoAppointmentsMsg] = useState(false);
   const { credentials } = useSelector(userData);
@@ -43,7 +39,7 @@ const UserAppointment = () => {
           ))}
         </div>
       )}
-      <Footer />
+      <Link to="/" className="imageLink"></Link>
     </div>
   );
 };

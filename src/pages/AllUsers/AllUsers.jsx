@@ -4,6 +4,7 @@ import "./AllUsers.css";
 import Footer from "../../common/Footer/Footer";
 import { userData } from "../userSlice";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const AllUsers = () => {
   const [users, setUsers] = useState([]);
@@ -124,8 +125,15 @@ const AllUsers = () => {
                     })
                   }
                 />
-                <button className="botonUser2" onClick={handleUpdateUser}>Guardar</button>
-                <button className="botonUser2" onClick={() => setEditingUser(null)}>Cancelar</button>
+                <button className="botonUser2" onClick={handleUpdateUser}>
+                  Guardar
+                </button>
+                <button
+                  className="botonUser2"
+                  onClick={() => setEditingUser(null)}
+                >
+                  Cancelar
+                </button>
               </div>
             ) : (
               <div>
@@ -134,7 +142,12 @@ const AllUsers = () => {
                 <p>Email: {user.email}</p>
                 <p>Phone: {user.phone}</p>
                 <p>Dni: {user.dni}</p>
-                <button className="botonUser" onClick={() => handleEditUser(user.id)}>Editar</button>
+                <button
+                  className="botonUser"
+                  onClick={() => handleEditUser(user.id)}
+                >
+                  Editar
+                </button>
               </div>
             )}
           </div>
@@ -151,7 +164,7 @@ const AllUsers = () => {
           </button>
         ))}
       </div>
-      <Footer />
+      <Link to="/" className="imageLink"></Link>
     </div>
   );
 };

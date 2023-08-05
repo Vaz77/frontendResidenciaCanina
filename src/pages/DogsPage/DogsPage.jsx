@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./DogsPage.css";
 import { registerDog } from "../../services/apiCalls";
-import Footer from "../../common/Footer/Footer";
+import { Link } from "react-router-dom";
 
 const DogsPage = () => {
   const [dogData, setDogData] = useState({
@@ -78,7 +78,7 @@ const DogsPage = () => {
           <button type="submit">Registrar Perro</button>
         </form>
       </div>
-      <Footer />
+      <Link to="/" className="imageLink"></Link>
     </div>
   );
 };

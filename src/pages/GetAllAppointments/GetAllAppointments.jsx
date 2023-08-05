@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
-import './GetAllAppointments.css'
-import Footer from "../../common/Footer/Footer";
+import "./GetAllAppointments.css";
 import {
   fetchAllAppointments,
   deleteAppointment,
@@ -8,13 +7,13 @@ import {
 import { useSelector } from "react-redux";
 import { userData } from "../userSlice";
 import "./GetAllAppointments.css";
+import { Link } from "react-router-dom";
 
 function GetAllAppointments() {
   const { credentials } = useSelector(userData);
   const [appointments, setAppointments] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [selectedAppointmentId, setSelectedAppointmentId] = useState(null);
-
   const getAllAppointments = async () => {
     try {
       const fetchedAppointments = await fetchAllAppointments(credentials.token);
@@ -23,11 +22,9 @@ function GetAllAppointments() {
       console.error("Error fetching all appointments:", error);
     }
   };
-
   useEffect(() => {
     getAllAppointments();
   }, [credentials.token]);
-
   const handleDeleteAppointment = async (appointmentId) => {
     try {
       await deleteAppointment(credentials.token, appointmentId);
@@ -36,21 +33,18 @@ function GetAllAppointments() {
       console.error("Error deleting appointment:", error);
     }
   };
-
   const handleOpenModal = (appointmentId) => {
     setShowModal(true);
     setSelectedAppointmentId(appointmentId);
   };
-
   const handleCloseModal = () => {
     setShowModal(false);
     setSelectedAppointmentId(null);
   };
-
   return (
     <div className="get-all-appointments-container">
       <div>
-        <h2 className="misCitas">Mis citas</h2>
+        <h2 className="misCitas">Todas las citas</h2>
       </div>
       {appointments.length ? (
         <div className="appointmentsList">
@@ -74,7 +68,6 @@ function GetAllAppointments() {
       ) : (
         <p className="loadingAppointments">No hay citas disponibles.</p>
       )}
-
       {showModal && (
         <div className="modal">
           <h3>¿Eliminar esta cita?</h3>
@@ -86,7 +79,7 @@ function GetAllAppointments() {
           <button onClick={handleCloseModal}>Cancelar</button>
         </div>
       )}
-      <Footer />
+      <Link to="/" className="imageLink"></Link>
     </div>
   );
 }

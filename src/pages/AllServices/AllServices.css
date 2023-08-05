@@ -2,22 +2,22 @@
   background-color: #a5b6aa;
   min-height: 100vh;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   flex-direction: column;
-  padding: 20px;
+  padding: 0em;
 }
 
 .services-title {
   font-size: 28px;
   font-weight: bold;
-  margin-bottom: 30px;
+  margin-bottom: 150px;
   color: white;
 }
 
 .services-list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 30px;
 }
 
@@ -36,10 +36,10 @@
   font-weight: bold;
 }
 
-.botonServices{
+.botonServices {
   background-color: #c1b59f;
 }
-.botonServices2{
+.botonServices2 {
   background-color: #c1b59f;
   margin-left: 0.3em;
 }

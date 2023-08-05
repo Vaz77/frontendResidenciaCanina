@@ -4,6 +4,7 @@ import "./AllServices.css";
 import Footer from "../../common/Footer/Footer";
 import { userData } from "../userSlice";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const AllServices = () => {
   const [services, setServices] = useState([]);
@@ -86,8 +87,16 @@ const AllServices = () => {
                     })
                   }
                 />
-                <button className="botonServices2" onClick={handleUpdateService}>Guardar</button>
-                <button className="botonServices2" onClick={() => setEditingService(null)}>
+                <button
+                  className="botonServices2"
+                  onClick={handleUpdateService}
+                >
+                  Guardar
+                </button>
+                <button
+                  className="botonServices2"
+                  onClick={() => setEditingService(null)}
+                >
                   Cancelar
                 </button>
               </div>
@@ -96,7 +105,10 @@ const AllServices = () => {
                 <p>Nombre del servicio: {service.name}</p>
                 <p>Descripción: {service.description}</p>
                 <p>Precio: {service.price}</p>
-                <button className="botonServices" onClick={() => handleEditService(service.id)}>
+                <button
+                  className="botonServices"
+                  onClick={() => handleEditService(service.id)}
+                >
                   Editar
                 </button>
               </div>
@@ -104,7 +116,7 @@ const AllServices = () => {
           </div>
         ))}
       </div>
-      <Footer />
+      <Link to="/" className="imageLink"></Link>
     </div>
   );
 };

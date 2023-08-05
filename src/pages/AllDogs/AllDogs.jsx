@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { fetchAllDogs, updateDog } from "../../services/apiCalls";
 import "./AllDogs.css";
-import Footer from "../../common/Footer/Footer";
 import { useSelector } from "react-redux";
 import { userData } from "../userSlice";
+import { Link } from "react-router-dom";
 
 const AllDogs = () => {
   const { credentials } = useSelector(userData);
@@ -121,7 +121,7 @@ const AllDogs = () => {
           </div>
         ))}
       </div>
-      <Footer />
+      <Link to="/" className="imageLink"></Link>
     </div>
   );
 };

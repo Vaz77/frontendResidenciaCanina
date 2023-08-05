@@ -23,7 +23,7 @@
   width: calc(50% - 20px);
   box-sizing: border-box;
   margin-bottom: 20px;
-  padding: 20px;
+  padding: 5.5px;
   min-height: 200px;
 }
 
@@ -90,10 +90,10 @@
   content: "»";
 }
 
-.botonUser{
+.botonUser {
   background-color: #bbcfc0;
 }
-.botonUser2{
+.botonUser2 {
   background-color: #bbcfc0;
   margin-left: 0.3em;
 }

@@ -2,10 +2,10 @@
   background-color: #9dafa2;
   min-height: 100vh;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   flex-direction: column;
-  padding: 20px;
+  padding: 40px 20px 20px;
 }
 
 .misCitas {
