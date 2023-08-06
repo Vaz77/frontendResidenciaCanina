@@ -26,7 +26,7 @@ const AllDogs = () => {
       const dogsData = await fetchAllDogs(credentials.token);
       setDogs(dogsData.data);
     } catch (error) {
-      console.error("Error al obtener los servicios:", error);
+      console.error("Error al obtener los perros:", error);
     }
   };
   const handleEditDog = (dogId) => {
@@ -116,6 +116,7 @@ const AllDogs = () => {
                   <p>Edad: {dog.age}</p>
                   <p>Peso: {dog.wheight}</p>
                   <p>Patologías: {dog.pathologies}</p>
+                  <p>Dni del usuario: {dog.user_dni}</p>
                   <button
                     className="butonDogs"
                     onClick={() => handleEditDog(dog.id)}

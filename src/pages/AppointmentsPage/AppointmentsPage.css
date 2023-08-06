@@ -311,6 +311,14 @@ textarea {
   }
 }
 
+.perroPerfil {
+  width: 40em;
+  margin-bottom: -1.2em;
+  margin-top: -15em;
+  display: flex;
+  margin-left: 52em;
+}
+
 @media screen and (max-width: 768px) {
   .appointments-page {
     padding: 10px;

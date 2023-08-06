@@ -6,6 +6,7 @@ import icono3 from "../../assets/paseo.png";
 import icono4 from "../../assets/adiestramiento.png";
 import icono5 from "../../assets/transportin.png";
 import icono6 from "../../assets/vet.png";
+import perroLavandose from "../../assets/perroLavandose.png";
 
 const ServicesPage = () => {
   const services = [
@@ -79,6 +80,9 @@ const ServicesPage = () => {
             </div>
           </div>
         ))}
+      </div>
+      <div className="perroLavandose">
+        <img src={perroLavandose} alt="Perro" className="perroLavandose" />
       </div>
     </div>
   );

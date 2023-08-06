@@ -8,6 +8,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import "react-calendar/dist/Calendar.css";
 import Calendar from "react-calendar";
 import "react-datepicker/dist/react-datepicker.css";
+import perroPerfil from "../../assets/perroPerfil.png"
 
 const AppointmentsPage = () => {
   const [time, setTime] = useState("");
@@ -235,6 +236,9 @@ const AppointmentsPage = () => {
           {errorMessage && <div className="error-message">{errorMessage}</div>}
         </form>
       </section>
+      <div className="perroLavandose">
+        <img src={perroPerfil} alt="Perro" className="perroPerfil" />
+      </div>
     </div>
   );
 };

@@ -60,6 +60,13 @@
   outline: none;
 }
 
+.perroLavandose {
+  background-repeat: no-repeat;
+  margin-bottom: -2em;
+  margin-top: -2em;
+  width: 45em;
+}
+
 @media screen and (max-width: 768px) {
   .services-page {
     padding: 20px;

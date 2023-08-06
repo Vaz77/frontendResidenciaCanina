@@ -2,15 +2,19 @@ import React, { useState } from "react";
 import "./DogsPage.css";
 import { registerDog } from "../../services/apiCalls";
 import { Link } from "react-router-dom";
+import { userData } from "../userSlice";
+import { useSelector } from "react-redux";
 
 const DogsPage = () => {
+  const { credentials } = useSelector(userData);
   const [dogData, setDogData] = useState({
-    name: "",
+    dog_name: "",
     breed: "",
     age: "",
     wheight: "",
     pathologies: "",
     userId: "",
+    userDni: "",
   });
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -20,7 +24,7 @@ const DogsPage = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await registerDog(dogData);
+      const response = await registerDog(credentials.token, dogData);
       console.log(response);
     } catch (error) {
       console.error(error);
@@ -34,8 +38,8 @@ const DogsPage = () => {
         <form className="dog-form" onSubmit={handleSubmit}>
           <input
             type="text"
-            name="name"
-            value={dogData.name}
+            name="dog_name"
+            value={dogData.dog_name}
             placeholder="Nombre del perro"
             onChange={handleChange}
           />
@@ -69,9 +73,9 @@ const DogsPage = () => {
           />
           <input
             type="text"
-            name="userId"
-            value={dogData.userId}
-            placeholder="Numero de usuario"
+            name="userDni"
+            value={dogData.userDni}
+            placeholder="DNI del cliente"
             onChange={handleChange}
           />
           <button type="submit">Registrar Perro</button>

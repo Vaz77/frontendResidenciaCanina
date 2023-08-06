@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useDispatch } from "react-redux";
 
-  const API_URL = 'http://localhost:3000'
+const API_URL = "http://localhost:3000";
 // const API_URL = "https://backend-residencia-canina.vercel.app";
 
 export const registerUser = async (body) => {
@@ -161,7 +161,7 @@ export const updateUser = async (userData, token) => {
   }
 };
 
-export const registerDog = async (dogData, token) => {
+export const registerDog = async (token, dogData) => {
   try {
     const response = await axios.post(`${API_URL}/dog/register`, dogData, {
       headers: {
