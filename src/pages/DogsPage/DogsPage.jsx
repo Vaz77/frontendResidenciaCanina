@@ -80,8 +80,9 @@ const DogsPage = () => {
           />
           <button type="submit">Registrar Perro</button>
         </form>
+        <Link to="/" className="imageLink"></Link>
       </div>
-      <Link to="/" className="imageLink"></Link>
+      
     </div>
   );
 };

@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./GetAllAppointments.css";
-import {
-  fetchAllAppointments,
-  deleteAppointment,
-} from "../../services/apiCalls";
+import {fetchAllAppointments} from "../../services/apiCalls";
 import { useSelector } from "react-redux";
 import { userData } from "../userSlice";
 import "./GetAllAppointments.css";
@@ -27,21 +24,12 @@ function GetAllAppointments() {
   useEffect(() => {
     setIsLoading(true);
     getAllAppointments();
+
     const fakeAPICall = setTimeout(() => {
       setIsLoading(false);
     }, 1000);
-
     return () => clearTimeout(fakeAPICall);
   }, [credentials.token]);
-
-  const handleDeleteAppointment = async (appointmentId) => {
-    try {
-      await deleteAppointment(credentials.token, appointmentId);
-      getAllAppointments();
-    } catch (error) {
-      console.error("Error deleting appointment:", error);
-    }
-  };
   const handleOpenModal = (appointmentId) => {
     setShowModal(true);
     setSelectedAppointmentId(appointmentId);
@@ -63,9 +51,9 @@ function GetAllAppointments() {
         <>
           {appointments.length ? (
             <div className="appointmentsList">
-              {appointments.map((appointment) => {
+              {appointments.map((appointment, index) => {
                 return (
-                  <div key={appointment.id} className="appointmentCard">
+                  <div key={`${appointment.id}-${index}`} className="appointmentCard">
                     <p>Hora de entrada: {appointment.time}</p>
                     <p>Fecha de entrada: {appointment.date}</p>
                     <p>Nombre del perro: {appointment.dog_name}</p>
@@ -73,9 +61,6 @@ function GetAllAppointments() {
                     <p>Fecha de salida: {appointment.date_exit}</p>
                     <p>Hora de salida: {appointment.duration}</p>
                     <p>Observaciones: {appointment.observations}</p>
-                    <button onClick={() => handleOpenModal(appointment.id)}>
-                      Eliminar Cita
-                    </button>
                     <hr />
                   </div>
                 );
@@ -85,17 +70,6 @@ function GetAllAppointments() {
             <p className="loadingAppointments">No hay citas disponibles.</p>
           )}
         </>
-      )}
-      {showModal && (
-        <div className="modal">
-          <h3>¿Eliminar esta cita?</h3>
-          <button
-            onClick={() => handleDeleteAppointment(selectedAppointmentId)}
-          >
-            Eliminar
-          </button>
-          <button onClick={handleCloseModal}>Cancelar</button>
-        </div>
       )}
       <Link to="/" className="imageLink"></Link>
     </div>

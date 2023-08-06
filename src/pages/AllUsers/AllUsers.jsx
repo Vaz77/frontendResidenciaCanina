@@ -175,8 +175,9 @@ const AllUsers = () => {
             {index + 1}
           </button>
         ))}
+        <Link to="/" className="imageLink"></Link>
       </div>
-      <Link to="/" className="imageLink"></Link>
+      
     </div>
   );
 };

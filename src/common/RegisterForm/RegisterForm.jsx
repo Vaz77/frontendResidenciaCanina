@@ -119,7 +119,7 @@ const RegisterForm = ({ isOpen, onRequestClose }) => {
               onChange={handleChange}
               placeholder="Introduce tu contraseña"
             />
-                        {showPassword ? (
+            {showPassword ? (
               <FiEyeOff
                 className="password-visibility-icon"
                 onClick={togglePasswordVisibility}

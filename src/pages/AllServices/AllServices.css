@@ -45,7 +45,20 @@
 }
 
 @media screen and (max-width: 768px) {
+  .services-title {
+    font-size: 24px;
+  }
+
   .services-list {
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    max-width: 400px;
+  }
+
+  .service-card {
+    padding: 16px;
+  }
+
+  .service-card p {
+    font-size: 12px;
   }
 }

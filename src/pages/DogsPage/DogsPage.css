@@ -74,3 +74,14 @@
 .dog-form button:hover {
   background-color: #ff4081;
 }
+
+@media screen and (max-width: 768px) {
+  .dog-form {
+    margin-top: 1em;
+  }
+
+  .dog-form input,
+  .dog-form button {
+    max-width: 100%;
+  }
+}
