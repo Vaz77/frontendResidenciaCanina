@@ -1,5 +1,6 @@
 import Modal from "react-modal";
 import React, { useState } from "react";
+import { FiEye, FiEyeOff } from "react-icons/fi";
 import "./RegisterForm.css";
 import { registerUser } from "../../services/apiCalls";
 import "./RegisterForm.css";
@@ -13,6 +14,11 @@ const RegisterForm = ({ isOpen, onRequestClose }) => {
     email: "",
     password: "",
   });
+
+  const [showPassword, setShowPassword] = useState(false);
+  const togglePasswordVisibility = () => {
+    setShowPassword((prevShowPassword) => !prevShowPassword);
+  };
 
   const closeForm = () => {
     onRequestClose();
@@ -61,6 +67,7 @@ const RegisterForm = ({ isOpen, onRequestClose }) => {
               id="name"
               value={formData.name}
               onChange={handleChange}
+              placeholder="Introduce tu nombre"
             />
           </div>
           <div className="form-group">
@@ -70,6 +77,7 @@ const RegisterForm = ({ isOpen, onRequestClose }) => {
               id="surname"
               value={formData.surname}
               onChange={handleChange}
+              placeholder="Introduce tus apellidos"
             />
           </div>
           <div className="form-group">
@@ -79,6 +87,7 @@ const RegisterForm = ({ isOpen, onRequestClose }) => {
               id="dni"
               value={formData.dni}
               onChange={handleChange}
+              placeholder="Introduce tu numero de dni"
             />
           </div>
           <div className="form-group">
@@ -88,6 +97,7 @@ const RegisterForm = ({ isOpen, onRequestClose }) => {
               id="phone"
               value={formData.phone}
               onChange={handleChange}
+              placeholder="Introduce tu número teléfono"
             />
           </div>
           <div className="form-group">
@@ -97,16 +107,29 @@ const RegisterForm = ({ isOpen, onRequestClose }) => {
               id="email"
               value={formData.email}
               onChange={handleChange}
+              placeholder="Introduce tu correo electrónico"
             />
           </div>
           <div className="form-group">
             <label htmlFor="password">Contraseña:</label>
             <input
-              type="password"
+              type={showPassword ? "text" : "password"}
               id="password"
               value={formData.password}
               onChange={handleChange}
+              placeholder="Introduce tu contraseña"
             />
+                        {showPassword ? (
+              <FiEyeOff
+                className="password-visibility-icon"
+                onClick={togglePasswordVisibility}
+              />
+            ) : (
+              <FiEye
+                className="password-visibility-icon"
+                onClick={togglePasswordVisibility}
+              />
+            )}
           </div>
           <div className="button-container">
             <button className="btn btn-cancel" onClick={onRequestClose}>

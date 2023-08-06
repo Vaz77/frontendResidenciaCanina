@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Modal from "react-modal";
+import { FiEye, FiEyeOff } from "react-icons/fi";
 import "./LoginForm.css";
 import { NavLink } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -13,6 +14,7 @@ const LoginForm = ({ isOpen, onRequestClose, onRegisterModalOpen }) => {
     email: "",
     password: "",
   });
+  const [showPassword, setShowPassword] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const inputHandler = (e) => {
@@ -21,6 +23,10 @@ const LoginForm = ({ isOpen, onRequestClose, onRegisterModalOpen }) => {
       ...prevState,
       [name]: value,
     }));
+  };
+
+  const togglePasswordVisibility = () => {
+    setShowPassword((prevShowPassword) => !prevShowPassword);
   };
 
   const submitHandler = (e) => {
@@ -65,17 +71,30 @@ const LoginForm = ({ isOpen, onRequestClose, onRegisterModalOpen }) => {
               name="email"
               value={formData.email}
               onChange={inputHandler}
+              placeholder="Introduce tu correo electrónico"
             />
           </div>
           <div className="form-group">
             <label htmlFor="password">Contraseña:</label>
             <input
-              type="password"
+              type={showPassword ? "text" : "password"}
               id="password"
               name="password"
               value={formData.password}
               onChange={inputHandler}
+              placeholder="Introduce tu contraseña"
             />
+        {showPassword ? (
+          <FiEyeOff
+            className="password-visibility-icon"
+            onClick={togglePasswordVisibility}
+          />
+        ) : (
+          <FiEye
+            className="password-visibility-icon"
+            onClick={togglePasswordVisibility}
+          />
+        )}
           </div>
           <NavLink as={NavLink} to="/" exact="true" className="inicio">
             <h3 onClick={onRegisterModalOpen}>

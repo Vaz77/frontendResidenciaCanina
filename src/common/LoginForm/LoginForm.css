@@ -57,6 +57,12 @@ input {
   border: solid 0.13em black;
 }
 
+.password-visibility-icon {
+  cursor: pointer;
+  margin-top: 10px;
+  font-size: 20px;
+}
+
 .button-container {
   display: flex;
   margin: 0.5em;
