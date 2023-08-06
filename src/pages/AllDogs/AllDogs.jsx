@@ -59,6 +59,7 @@ const AllDogs = () => {
             <div key={dog.id} className="dog-card">
               {editingDog && editingDog.id === dog.id ? (
                 <div>
+                  <label>Nombre del perro:</label>
                   <input
                     type="text"
                     value={editingDog.name}
@@ -69,6 +70,18 @@ const AllDogs = () => {
                       })
                     }
                   />
+                  <label>Raza:</label>
+                  <input
+                    type="text"
+                    value={editingDog.breed}
+                    onChange={(e) =>
+                      setEditingDog({
+                        ...editingDog,
+                        breed: e.target.value,
+                      })
+                    }
+                  />
+                  <label>Edad:</label>
                   <input
                     type="text"
                     value={editingDog.age}
@@ -79,6 +92,7 @@ const AllDogs = () => {
                       })
                     }
                   />
+                  <label>Peso:</label>
                   <input
                     type="text"
                     value={editingDog.wheight}
@@ -89,6 +103,7 @@ const AllDogs = () => {
                       })
                     }
                   />
+                  <label>Patologías:</label>
                   <input
                     type="text"
                     value={editingDog.pathologies}
