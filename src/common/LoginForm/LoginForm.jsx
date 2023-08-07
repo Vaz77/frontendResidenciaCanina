@@ -42,6 +42,7 @@ const LoginForm = ({ isOpen, onRequestClose, onRegisterModalOpen }) => {
             password: formData.password,
             name: decodedToken.name,
             roleId: decodedToken.roleId,
+            id: decodedToken.userId,
           })
         );
         onRequestClose();

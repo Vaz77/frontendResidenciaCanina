@@ -122,6 +122,11 @@ const Footer = () => {
             <h5>Mis citas</h5>
           </NavLink>
         )}
+        {roleId === 2 && (
+          <NavLink as={NavLink} to="/userProfile" exact="true">
+            <h5>Mi perfil</h5>
+          </NavLink>
+        )}
         {token ? (
           <NavLink
             as={NavLink}

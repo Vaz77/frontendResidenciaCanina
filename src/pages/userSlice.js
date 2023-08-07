@@ -11,6 +11,7 @@ export const userSlice = createSlice({
       roleId: "2",
       email: "",
       userDni: "",
+      id: "",
     },
   },
   reducers: {
@@ -21,6 +22,7 @@ export const userSlice = createSlice({
       state.data.name = payload.name;
       state.data.roleId = payload.roleId;
       state.data.dni = payload.dni;
+      state.data.id = payload.id
     },
     logout: (state) => {
       return {
@@ -43,9 +45,14 @@ export const userSlice = createSlice({
     setToken: (state, action) => {
       state.credentials.token = action.payload;
     },
+    setUserProfile: (state, action) => {
+      const userProfileData = action.payload;
+      state.data.name = userProfileData.name;
+      state.data.email = userProfileData.email;
+    },
   },
 });
 
 export const userData = (state) => state.user;
-export const { login, logout, register, setToken } = userSlice.actions;
+export const { login, logout, register, setToken, setUserProfile } = userSlice.actions;
 export default userSlice.reducer;

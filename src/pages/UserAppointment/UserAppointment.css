@@ -89,6 +89,7 @@ button {
   right: unset;
   margin-top: 20px;
   cursor: pointer;
+  display: block;
 }
 
 @media screen and (max-width: 768px) {

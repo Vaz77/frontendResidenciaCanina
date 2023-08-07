@@ -23,11 +23,6 @@
   text-align: center;
 }
 
-.form-group {
-  width: 30em;
-  margin-top: 2em;
-}
-
 .form-group label {
   display: block;
   color: black;
@@ -343,9 +338,6 @@ textarea {
   .reservation-form {
     padding: 10px;
     max-width: none;
-  }
-  .form-group {
-    width: 100%;
   }
   input,
   select,

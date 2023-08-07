@@ -75,7 +75,7 @@ body {
 }
 
 .reservar-cita-rope {
-  margin-top: -27.8em;
+  margin-top: -28.9em;
   margin-left: 3.5em;
   transform: translateX(-50%);
   width: 2px;
@@ -125,17 +125,17 @@ body {
 
 .card-container {
   display: flex;
-  justify-content: space-between;
-  padding: 2rem;
+  justify-content: center;
+  gap: 1rem;
+  width: 100%;
+  margin-top: 1rem;
 }
 
 .card {
-  width: 140px;
-  height: 20px;
   background-color: #bbcfc0;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgb(255, 255, 255);
-  padding: 1rem;
+  padding: 0.5rem 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -149,7 +149,6 @@ body {
   overflow: hidden;
   text-decoration: none;
 }
-
 
 .card::before {
   content: "";
@@ -207,8 +206,6 @@ body {
     text-align: center;
   }
   .reservar-cita-container {
-    width: 50px;
-    height: 120px;
     margin-top: 1em;
     margin-left: -15em;
   }
@@ -226,7 +223,7 @@ body {
   .reservar-cita-rope {
     width: 2px;
     height: 180px;
-    margin-top: -17.3em;
+    margin-top: -16.8em;
     margin-left: 1.6em;
   }
 
@@ -250,7 +247,7 @@ body {
   .carousel {
     max-width: 100%;
     overflow: hidden;
-    bottom: 6em; 
+    bottom: 6em;
   }
 
   .carousel .slide img {

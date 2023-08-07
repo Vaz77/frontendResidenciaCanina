@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useDispatch } from "react-redux";
 
-// const API_URL = "http://localhost:3000";
+ //const API_URL = "http://localhost:3000";
 const API_URL = "https://backend-residencia-canina.vercel.app";
 
 export const registerUser = async (body) => {
@@ -64,6 +64,16 @@ export const fetchAllAppointments = async (token) => {
     throw error;
   }
 };
+
+export const fetchUserProfile = async (userId) => {
+  try {
+    const response = await axios.get(`${API_URL}/user/profile/${userId}/`);
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
 
 export const fetchAllUsers = async (token) => {
   try {
@@ -143,10 +153,10 @@ export const updateServices = async (serviceData, token) => {
   }
 };
 
-export const updateUser = async (userData, token) => {
+export const updateUser = async (token, userData) => {
   try {
     const response = await axios.put(
-      `${API_URL}/user/profile/${userData.id}`,
+      `${API_URL}/user/profile`,
       userData,
       {
         headers: {
